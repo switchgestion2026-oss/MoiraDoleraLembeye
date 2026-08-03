@@ -201,11 +201,18 @@ main,footer{position:relative;z-index:1;}
 /* ============ CARDS SERVICIOS ============ */
 .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4);}
 .service-card{
+  position:relative;overflow:hidden;
   background:var(--white);border:1px solid var(--line);border-radius:var(--radius-md);
   padding:var(--s5) var(--s4);
   transition:transform 240ms var(--ease), box-shadow 240ms var(--ease), border-color 240ms var(--ease);
 }
 .service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:transparent;}
+  .service-card::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%), rgba(184,150,70,.16), transparent 70%);
+  opacity:0;transition:opacity 300ms ease;
+}
+.service-card:hover::before{opacity:1;}
 .card-ic{
   width:52px;height:52px;border-radius:var(--radius-sm);background:var(--gray);
   display:flex;align-items:center;justify-content:center;color:var(--navy);margin-bottom:var(--s4);
@@ -832,7 +839,14 @@ main,footer{position:relative;z-index:1;}
   nav.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', function(){nav.classList.remove('is-open'); toggle.setAttribute('aria-expanded','false');});
   });
-
+// Glow en cards al pasar el mouse
+  document.querySelectorAll('.service-card').forEach(function(card){
+    card.addEventListener('mousemove', function(e){
+      var r=card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX-r.left)+'px');
+      card.style.setProperty('--my', (e.clientY-r.top)+'px');
+    });
+  });
   // FAQ accordion
   document.querySelectorAll('.faq-item').forEach(function(item){
     var btn=item.querySelector('.faq-q'), panel=item.querySelector('.faq-a');
