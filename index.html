@@ -122,7 +122,20 @@ main,footer{position:relative;z-index:1;}
   display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
 .logo-mark span{font-family:'Plus Jakarta Sans',serif;font-weight:700;font-size:1.05rem;color:var(--white);}
-.logo-mark span em{color:var(--gold);font-style:normal;}  .logo-mark{animation:logoIn 700ms cubic-bezier(.4,0,.2,1) both;transition:transform 250ms ease;} .logo:hover .logo-mark{transform:scale(1.06) rotate(-2deg);} .logo-mark span em{animation:goldIn 500ms ease 550ms both;}  @keyframes logoIn{   0%{opacity:0;transform:scale(.8) rotate(-8deg);}   100%{opacity:1;transform:scale(1) rotate(0deg);} } @keyframes goldIn{   from{color:#FFFFFF;}   to{color:var(--gold);} }
+.logo-mark span em{color:var(--gold);font-style:normal;}
+
+.logo-mark{animation:logoIn 700ms cubic-bezier(.4,0,.2,1) both;transition:transform 250ms ease;}
+.logo:hover .logo-mark{transform:scale(1.06) rotate(-2deg);}
+.logo-mark span em{animation:goldIn 500ms ease 550ms both;}
+
+@keyframes logoIn{
+  0%{opacity:0;transform:scale(.8) rotate(-8deg);}
+  100%{opacity:1;transform:scale(1) rotate(0deg);}
+}
+@keyframes goldIn{
+  from{color:#FFFFFF;}
+  to{color:var(--gold);}
+}
 .logo-text{display:flex;flex-direction:column;line-height:1.25;}
 .logo-text b{font-size:.9rem;letter-spacing:.02em;color:var(--navy);font-weight:700;}
 .logo-text small{font-size:.6875rem;letter-spacing:.14em;color:var(--gold);font-weight:700;text-transform:uppercase;}
@@ -157,7 +170,34 @@ main,footer{position:relative;z-index:1;}
 }
 
 /* ============ HERO ============ */
-.hero{padding-top:clamp(48px,8vw,88px);padding-bottom:clamp(56px,8vw,96px);scroll-margin-top:var(--header-h);} .hero{   background-image:linear-gradient(180deg, rgba(18,36,61,.55), rgba(18,36,61,.8)), url('portada.jpg');   background-size:cover;   background-position:center;   min-height:88vh;   display:flex;   align-items:center; } @media (min-width:961px){   .hero .hero-grid{grid-template-columns:1.15fr .85fr;max-width:1280px;} } @media (max-width:960px){   .hero{min-height:auto;padding-top:32px;}   .hero .float-cards{justify-content:center;} } .hero .hero-title{color:#FFFFFF;} .hero .hero-title .accent{color:var(--gold-light);} .hero .eyebrow{color:var(--gold-light);} .hero .eyebrow::before{background:var(--gold-light);} .hero .lead{color:rgba(255,255,255,.85);} .hero .badge{color:#FFFFFF;} .hero .badge-ic{border-color:rgba(255,255,255,.5);color:var(--gold-light);} .hero .btn-outline{color:#FFFFFF;border-color:rgba(255,255,255,.4);} .hero .btn-outline:hover{border-color:#FFFFFF;background:rgba(255,255,255,.08);} .hero .hero-panel{display:none;} .hero .hero-visual{aspect-ratio:auto;display:flex;align-items:center;justify-content:flex-end;} .hero .float-cards{position:static;transform:none;}
+.hero{padding-top:clamp(48px,8vw,88px);padding-bottom:clamp(56px,8vw,96px);scroll-margin-top:var(--header-h);}
+.hero{
+  background-image:linear-gradient(180deg, rgba(18,36,61,.55), rgba(18,36,61,.8)), url('portada.jpg');
+  background-size:cover;
+  background-position:center;
+  min-height:88vh;
+  display:flex;
+  align-items:center;
+}
+@media (min-width:961px){
+  .hero .hero-grid{grid-template-columns:1.15fr .85fr;max-width:1280px;}
+}
+@media (max-width:960px){
+  .hero{min-height:auto;padding-top:32px;}
+  .hero .float-cards{justify-content:center;}
+}
+.hero .hero-title{color:#FFFFFF;}
+.hero .hero-title .accent{color:var(--gold-light);}
+.hero .eyebrow{color:var(--gold-light);}
+.hero .eyebrow::before{background:var(--gold-light);}
+.hero .lead{color:rgba(255,255,255,.85);}
+.hero .badge{color:#FFFFFF;}
+.hero .badge-ic{border-color:rgba(255,255,255,.5);color:var(--gold-light);}
+.hero .btn-outline{color:#FFFFFF;border-color:rgba(255,255,255,.4);}
+.hero .btn-outline:hover{border-color:#FFFFFF;background:rgba(255,255,255,.08);}
+.hero .hero-panel{display:none;}
+.hero .hero-visual{aspect-ratio:auto;display:flex;align-items:center;justify-content:flex-end;}
+.hero .float-cards{position:static;transform:none;}
 .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(32px,6vw,80px);align-items:center;}
 .hero-title{font-size:clamp(2.25rem,4.6vw,3.75rem);font-weight:700;}
 .hero-title .accent{color:var(--gold);}
@@ -201,18 +241,18 @@ main,footer{position:relative;z-index:1;}
 /* ============ CARDS SERVICIOS ============ */
 .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4);}
 .service-card{
-  position:relative;overflow:hidden;
   background:var(--white);border:1px solid var(--line);border-radius:var(--radius-md);
   padding:var(--s5) var(--s4);
   transition:transform 240ms var(--ease), box-shadow 240ms var(--ease), border-color 240ms var(--ease);
+  position:relative;overflow:hidden;
 }
-.service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:transparent;}
-  .service-card::before{
+.service-card::before{
   content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
   background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%), rgba(184,150,70,.16), transparent 70%);
   opacity:0;transition:opacity 300ms ease;
 }
 .service-card:hover::before{opacity:1;}
+.service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:transparent;}
 .card-ic{
   width:52px;height:52px;border-radius:var(--radius-sm);background:var(--gray);
   display:flex;align-items:center;justify-content:center;color:var(--navy);margin-bottom:var(--s4);
@@ -230,7 +270,21 @@ main,footer{position:relative;z-index:1;}
 @media (max-width:560px){.services-grid{grid-template-columns:1fr;}}
 
 /* ============ SOBRE EL ESTUDIO ============ */
-.about-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(32px,6vw,80px);align-items:center;} #sobre-estudio{   background-image:linear-gradient(180deg, rgba(18,36,61,.55), rgba(18,36,61,.8)), url('estudio.jpg');   background-size:cover;   background-position:center; } #sobre-estudio h2{color:#FFFFFF;} #sobre-estudio .eyebrow{color:var(--gold-light);} #sobre-estudio .eyebrow::before{background:var(--gold-light);} #sobre-estudio .lead{color:rgba(255,255,255,.85);} #sobre-estudio .value-row span{color:#FFFFFF;} #sobre-estudio .v-ic{background:rgba(255,255,255,.15);color:var(--gold-light);} #sobre-estudio .btn-outline{color:#FFFFFF;border-color:rgba(255,255,255,.4);} #sobre-estudio .btn-outline:hover{border-color:#FFFFFF;background:rgba(255,255,255,.08);} #sobre-estudio .about-visual{display:none;}
+.about-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(32px,6vw,80px);align-items:center;}
+#sobre-estudio{
+  background-image:linear-gradient(180deg, rgba(18,36,61,.55), rgba(18,36,61,.8)), url('estudio.jpg');
+  background-size:cover;
+  background-position:center;
+}
+#sobre-estudio h2{color:#FFFFFF;}
+#sobre-estudio .eyebrow{color:var(--gold-light);}
+#sobre-estudio .eyebrow::before{background:var(--gold-light);}
+#sobre-estudio .lead{color:rgba(255,255,255,.85);}
+#sobre-estudio .value-row span{color:#FFFFFF;}
+#sobre-estudio .v-ic{background:rgba(255,255,255,.15);color:var(--gold-light);}
+#sobre-estudio .btn-outline{color:#FFFFFF;border-color:rgba(255,255,255,.4);}
+#sobre-estudio .btn-outline:hover{border-color:#FFFFFF;background:rgba(255,255,255,.08);}
+#sobre-estudio .about-visual{display:none;}
 .about-visual{aspect-ratio:4/3.1;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);}
 .about-visual svg{width:100%;height:100%;}
 .about-values{display:flex;flex-direction:column;gap:var(--s3);margin:var(--s5) 0 var(--s5);}
@@ -268,7 +322,14 @@ main,footer{position:relative;z-index:1;}
 }
 
 /* ============ STATS ============ */
-.stats-band{background:var(--navy);color:var(--white);position:relative;overflow:hidden;padding-block:clamp(72px,10vw,130px);} .stats-band{   background-image:linear-gradient(180deg, rgba(10,16,26,.25), rgba(10,16,26,.6)), url('premium.png');   background-size:cover;   background-position:center; } .stats-band .bg-arcs{display:none;} .stats-band .stat-ic{display:none;}
+.stats-band{background:var(--navy);color:var(--white);position:relative;overflow:hidden;padding-block:clamp(72px,10vw,130px);}
+.stats-band{
+  background-image:linear-gradient(180deg, rgba(10,16,26,.25), rgba(10,16,26,.6)), url('premium.png');
+  background-size:cover;
+  background-position:center;
+}
+.stats-band .bg-arcs{display:none;}
+.stats-band .stat-ic{display:none;}
 .stats-band .bg-arcs{position:absolute;inset:0;opacity:.5;pointer-events:none;}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4);position:relative;}
 .stat{text-align:center;}
@@ -445,7 +506,8 @@ main,footer{position:relative;z-index:1;}
       </div>
 
       <div class="hero-visual reveal" data-anim="right">
-        <div class="hero-panel">           <img src="portada.jpg" alt="Estudio jurídico" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <div class="hero-panel">
+          <img src="portada.jpg" alt="Estudio jurídico" style="width:100%;height:100%;object-fit:cover;display:block;">
           <svg viewBox="0 0 520 540" preserveAspectRatio="xMidYMid slice">
             <defs>
               <linearGradient id="shelfGrad" x1="0" y1="0" x2="1" y2="1">
@@ -578,10 +640,11 @@ main,footer{position:relative;z-index:1;}
           <div class="value-row"><span class="v-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Compromiso con resultados reales</span></div>
         </div>
 
-        <a href="#" class="btn btn-outline">sobre nosotros</a>
+        <a href="#" class="btn btn-outline">Conocer más sobre nosotros</a>
       </div>
 
-      <div class="about-visual reveal" data-anim="right">         <img src="estudio.jpg" alt="Oficinas del estudio" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <div class="about-visual reveal" data-anim="right">
+        <img src="estudio.jpg" alt="Oficinas del estudio" style="width:100%;height:100%;object-fit:cover;display:block;">
         <svg viewBox="0 0 480 380" preserveAspectRatio="xMidYMid slice">
           <rect width="480" height="380" fill="#EFEAE0"/>
           <rect x="0" y="0" width="480" height="380" fill="#12243D" opacity="0.03"/>
@@ -727,9 +790,9 @@ main,footer{position:relative;z-index:1;}
       </div>
 
       <div class="contact-grid">
-        <form class="form-card reveal" data-anim="left" name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="contacto">
-          <p class="hp-field"><label>No completar: <input name="bot-field"></label></p>
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+        <form class="form-card reveal" data-anim="left" id="contactForm" method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbx9bXJzA98MKynaF0vXYf_7ZVM6ksO1-SP2bnIfFnVLeHf7ev3P4oAK02pEujjvEdBYng/exec">
+          <p class="hp-field"><label>No completar: <input name="botcheck"></label></p>
 
           <div class="field">
             <label for="f-nombre">Nombre y apellido</label>
@@ -747,8 +810,11 @@ main,footer{position:relative;z-index:1;}
             <label for="f-msg">Contanos tu consulta</label>
             <textarea id="f-msg" name="mensaje" required></textarea>
           </div>
+          <div class="field" style="display:flex;align-items:flex-start;gap:10px;">
+            <input type="checkbox" id="f-privacidad" name="acepto_privacidad" required style="width:18px;height:18px;min-height:0;margin-top:2px;flex-shrink:0;">
+            <label for="f-privacidad" style="font-weight:400;font-size:.875rem;margin:0;">He leído y acepto la <a href="privacidad.html" target="_blank" rel="noopener" style="color:var(--gold);font-weight:600;">Política de Privacidad</a>.</label>
+          </div>
           <button type="submit" class="btn btn-primary" style="width:100%;">Enviar consulta</button>
-          <p class="form-note">Al enviar este formulario aceptás nuestra Política de Privacidad.</p>
         </form>
 
         <div class="reveal" data-anim="right">
@@ -811,8 +877,10 @@ main,footer{position:relative;z-index:1;}
     <div class="footer-bottom">
       <span>© <span id="year"></span> Leguizamón &amp; Asociados. Todos los derechos reservados.</span>
       <div class="footer-legal">
-        <a href="#">Aviso Legal</a>
-        <a href="#">Política de Privacidad</a>
+        <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso Legal</a>
+        <a href="privacidad.html" target="_blank" rel="noopener">Política de Privacidad</a>
+        <a href="cookies.html" target="_blank" rel="noopener">Política de Cookies</a>
+        <a href="https://github.com/switchgestion2026-oss" target="_blank" rel="noopener">Switch Gestión</a>
       </div>
     </div>
   </div>
@@ -839,7 +907,20 @@ main,footer{position:relative;z-index:1;}
   nav.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', function(){nav.classList.remove('is-open'); toggle.setAttribute('aria-expanded','false');});
   });
-// Glow en cards al pasar el mouse
+// Envío del formulario de contacto (Google Sheets)
+  var contactForm=document.getElementById('contactForm');
+  var hiddenIframe=document.getElementById('hidden_iframe');
+  var formSubmitted=false;
+  if(contactForm && hiddenIframe){
+    contactForm.addEventListener('submit', function(){ formSubmitted=true; });
+    hiddenIframe.addEventListener('load', function(){
+      if(formSubmitted){
+        contactForm.innerHTML='<p style="text-align:center;font-weight:600;color:var(--navy);padding:40px 0;">¡Gracias! Tu consulta fue enviada, te vamos a contactar a la brevedad.</p>';
+      }
+    });
+  }
+
+  // Glow en cards al pasar el mouse
   document.querySelectorAll('.service-card').forEach(function(card){
     card.addEventListener('mousemove', function(e){
       var r=card.getBoundingClientRect();
@@ -925,6 +1006,41 @@ main,footer{position:relative;z-index:1;}
   setActive();
 
   document.getElementById('year').textContent=new Date().getFullYear();
+})();
+</script>
+<div class="cookie-banner" id="cookieBanner">
+  <p>Usamos cookies propias y de terceros para analítica y publicidad. Podés aceptarlas, rechazarlas o ver más en nuestra <a href="cookies.html" target="_blank" rel="noopener">Política de Cookies</a>.</p>
+  <div class="cookie-actions">
+    <button id="cookieReject" class="btn btn-outline btn-sm">Rechazar</button>
+    <button id="cookieAccept" class="btn btn-primary btn-sm">Aceptar</button>
+  </div>
+</div>
+<style>
+.cookie-banner{
+  position:fixed;left:16px;right:16px;bottom:16px;z-index:150;max-width:560px;margin-inline:auto;
+  background:#FFFFFF;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-md);
+  padding:20px 22px;display:flex;flex-direction:column;gap:14px;
+  transform:translateY(140%);transition:transform 320ms ease;
+}
+.cookie-banner.is-visible{transform:translateY(0);}
+.cookie-banner p{font-size:.875rem;color:var(--text-muted);margin:0;}
+.cookie-banner a{color:var(--gold);font-weight:600;}
+.cookie-actions{display:flex;gap:10px;justify-content:flex-end;}
+@media (max-width:480px){.cookie-actions{justify-content:stretch;}.cookie-actions .btn{flex:1;}}
+</style>
+<script>
+(function(){
+  var banner=document.getElementById('cookieBanner');
+  var stored=localStorage.getItem('cookieConsent');
+  if(!stored){ setTimeout(function(){ banner.classList.add('is-visible'); }, 600); }
+  document.getElementById('cookieAccept').addEventListener('click', function(){
+    localStorage.setItem('cookieConsent','accepted');
+    banner.classList.remove('is-visible');
+  });
+  document.getElementById('cookieReject').addEventListener('click', function(){
+    localStorage.setItem('cookieConsent','rejected');
+    banner.classList.remove('is-visible');
+  });
 })();
 </script>
 </body>
