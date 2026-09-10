@@ -1,1047 +1,679 @@
-<!DOCTYPE html>
-<html lang="es-AR">
+<!doctype html>
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Leguizamón & Asociados — Estudio Jurídico</title>
-<meta name="description" content="Asesoramiento jurídico claro para tomar mejores decisiones. Derecho Civil, Laboral, Penal, Comercial, Sucesiones, Contratos, Familia y Daños y perjuicios en Olavarría, Buenos Aires.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2312243D'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='26' fill='%23B89646' text-anchor='middle'%3EL%26A%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Estudio Moira Dolera Lembeye y Asociados — asesoramiento jurídico en Civil, Familia, Laboral, Comercial, Sucesiones, Amparos, Consumidor e Inmobiliario.">
+<title>Estudio Moira Dolera Lembeye y Asociados</title>
 <style>
-/* ============ TOKENS ============ */
 :root{
-  --bg:#F8F6F1;
-  --navy:#12243D;
-  --navy-2:#1B3556;
-  --gold:#B89646;
-  --gold-light:#D9C08C;
-  --gray:#F3F4F6;
-  --text:#1A1A1A;
-  --text-muted:#5B6270;
-  --line:rgba(18,36,61,0.08);
-  --white:#FFFFFF;
+  --navy:#0F2D4A;
+  --steel:#4F6D8A;
+  --mist:#B7C6D9;
+  --ice:#F3F6FA;
+  --white:#fff;
+  --ink:#172A3A;
+  --line:rgba(15,45,74,.16);
+  --serif:"Playfair Display", Georgia, serif;
+  --sans:Inter, Arial, sans-serif;
+  --max:1280px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{margin:0;color:var(--ink);background:var(--white);font-family:var(--sans)}
+a{color:inherit;text-decoration:none}
+button,a{font:inherit}
+img{max-width:100%;display:block}
+.container{width:min(calc(100% - 48px),var(--max));margin:auto}
+.section{position:relative}
+.eyebrow{font-size:11px;letter-spacing:.19em;text-transform:uppercase;color:var(--steel);font-weight:700}
+h1,h2,h3,p{margin-top:0}
+h1,h2,h3{font-family:var(--serif);font-weight:400;color:var(--navy)}
+h2{font-size:clamp(42px,5vw,76px);line-height:.98;margin-bottom:24px}
+p{line-height:1.65}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+[data-delay="1"]{transition-delay:.12s}.delay2{transition-delay:.22s}.delay3{transition-delay:.32s}
 
-  --font-display:'Plus Jakarta Sans', sans-serif;
-  --font-body:'Inter', sans-serif;
+/* NAV */
+.site-nav{position:fixed;z-index:50;top:0;left:0;width:100%;transition:.35s ease;color:white}
+.site-nav.scrolled{background:rgba(255,255,255,.94);backdrop-filter:blur(14px);color:var(--navy);box-shadow:0 1px 0 var(--line)}
+.nav-inner{height:84px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+.brand{display:flex;align-items:center;gap:15px}
+.monogram{font-family:var(--serif);font-size:37px;line-height:1;letter-spacing:-.07em}
+.brand-copy{border-left:1px solid currentColor;padding-left:15px;font-size:10px;letter-spacing:.1em;line-height:1.3;text-transform:uppercase;font-weight:700}
+.brand-copy span{font-weight:400;letter-spacing:.04em}
+.nav-links{display:flex;gap:25px;align-items:center;font-size:12px}
+.nav-links a{position:relative;padding:8px 0}
+.nav-links a:after{content:"";position:absolute;left:0;bottom:3px;width:0;height:1px;background:currentColor;transition:.25s}
+.nav-links a:hover:after{width:100%}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:11px;border:1px solid var(--navy);padding:13px 19px;border-radius:999px;font-size:12px;cursor:pointer;transition:.25s}
+.btn.primary{background:var(--navy);color:white}
+.btn.primary:hover{transform:translateY(-2px);background:#163e62}
+.btn.light{background:rgba(255,255,255,.84);border-color:rgba(255,255,255,.75);color:var(--navy)}
+.btn.outline{background:transparent;color:var(--navy)}
+.arrow{font-size:17px;line-height:0;transition:transform .25s}
+.btn:hover .arrow{transform:translateX(4px)}
+.menu{display:none;border:0;background:none;color:inherit;font-size:24px;cursor:pointer}
+.menu:focus-visible,.nav-links a:focus-visible,.btn:focus-visible{outline:2px solid var(--steel);outline-offset:3px}
 
-  --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s5:40px; --s6:48px;
-  --s8:64px; --s10:80px; --s12:96px; --s16:128px;
+/* MOBILE MENU OVERLAY */
+.mobile-menu{position:fixed;inset:0;z-index:70;background:var(--navy);color:white;display:flex;flex-direction:column;
+  transform:translateY(-100%);transition:transform .4s cubic-bezier(.22,.61,.36,1);height:100dvh;height:100vh}
+.mobile-menu.open{transform:translateY(0)}
+.mobile-menu-top{display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:72px;border-bottom:1px solid rgba(255,255,255,.18)}
+.mobile-menu-close{border:0;background:none;color:white;font-size:26px;cursor:pointer}
+.mobile-menu-links{display:flex;flex-direction:column;gap:6px;padding:40px 30px;overflow-y:auto}
+.mobile-menu-links a{font-family:var(--serif);font-size:30px;color:white;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.mobile-menu-cta{margin-top:auto;padding:24px 30px 40px}
+body.menu-open{overflow:hidden}
 
-  --radius-sm:8px; --radius-md:16px; --radius-lg:24px; --radius-pill:999px;
+/* HERO */
+.hero{min-height:760px;background:var(--navy);color:white;display:grid;align-items:end}
+.hero:before{content:"";position:absolute;inset:0;background:
+linear-gradient(90deg,rgba(15,45,74,.98) 0%,rgba(15,45,74,.86) 31%,rgba(15,45,74,.15) 65%,rgba(15,45,74,.34) 100%);z-index:1}
+.hero-image{position:absolute;inset:0;background-image:url("images/hero-moira.webp");background-size:cover;background-position:center 28%;filter:saturate(.9)}
+.hero-grid{position:relative;z-index:2;min-height:760px;display:grid;grid-template-columns:80px 1fr 320px;align-items:end;padding-bottom:95px}
+.hero-rail{height:470px;border-right:1px solid rgba(255,255,255,.35);display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:0 0 4px}
+.rail-number{font-family:var(--serif);font-size:25px}
+.rail-label{writing-mode:vertical-rl;transform:rotate(180deg);font-size:9px;letter-spacing:.2em;text-transform:uppercase;opacity:.85}
+.hero-copy{padding:0 7vw 0 42px;max-width:850px}
+.hero h1{color:white;font-size:clamp(54px,7vw,104px);line-height:.91;letter-spacing:-.045em;margin:17px 0 30px}
+.hero-lead{font-size:17px;max-width:650px;color:rgba(255,255,255,.9);margin-bottom:32px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-note{align-self:center;border-left:1px solid rgba(255,255,255,.42);padding-left:28px;margin-top:110px}
+.hero-note p{font-family:var(--serif);font-size:25px;line-height:1.2;color:white}
+.hero-note small{display:block;font-size:10px;letter-spacing:.15em;text-transform:uppercase;opacity:.75;margin-top:25px}
 
-  --shadow-sm:0 2px 10px rgba(18,36,61,0.06);
-  --shadow-md:0 12px 32px rgba(18,36,61,0.10);
-  --shadow-card:0 1px 2px rgba(18,36,61,0.04), 0 8px 24px rgba(18,36,61,0.06);
+/* SHARED SECTION RAIL */
+.section-wrap{display:grid;grid-template-columns:100px 1fr}
+.section-rail{border-right:1px solid var(--line);position:relative;padding-top:55px}
+.section-rail:before{content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--line)}
+.section-no{position:relative;background:transparent;width:58px;margin:0 auto;text-align:center;font-family:var(--serif);font-size:27px;color:var(--steel);padding:8px 0}
+.section-name{position:relative;background:transparent;font-size:9px;letter-spacing:.15em;text-transform:uppercase;text-align:center;writing-mode:vertical-rl;transform:rotate(180deg);margin:24px auto 0;padding:10px 0;color:var(--steel)}
+.section-content{min-width:0}
 
-  --ease:cubic-bezier(.4,0,.2,1);
-  --header-h:88px;
+/* INTRO */
+.intro{background:var(--ice)}
+.intro-grid{display:grid;grid-template-columns:1.05fr 1fr 290px;min-height:520px}
+.intro-photo{background:url("images/estudio-moira.webp") center 20%/cover no-repeat;filter:grayscale(.25)}
+.intro-copy{padding:75px 7vw}
+.intro-copy h2{font-size:clamp(40px,4vw,63px)}
+.intro-copy .btn{margin-top:8px}
+.quote-panel{background:#dfe9f3;padding:75px 34px;display:flex;flex-direction:column;justify-content:center}
+.quote-mark{font-family:var(--serif);font-size:75px;color:var(--mist);line-height:.5}
+.quote-panel p{font-family:var(--serif);font-size:28px;line-height:1.25;color:var(--navy)}
+
+/* PRACTICE */
+.practice{background:white}
+.practice-head{padding:78px 7vw 42px;display:flex;justify-content:space-between;align-items:end;gap:40px}
+.practice-head p{max-width:460px;color:var(--steel)}
+.practice-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.practice-card{min-height:230px;padding:32px 25px;border-right:1px solid var(--line);position:relative;transition:.35s;background:white}
+.practice-card:nth-child(4n){border-right:0}
+.practice-card:hover{background:var(--ice);transform:translateY(-5px)}
+.icon{width:40px;height:40px;color:var(--steel);margin-bottom:25px}
+.practice-card h3{font-size:25px;margin-bottom:8px}
+.practice-card p{font-size:13px;color:var(--steel);max-width:230px}
+.card-arrow{position:absolute;right:22px;bottom:22px;width:32px;height:32px;border:1px solid var(--mist);border-radius:50%;display:grid;place-items:center;transition:.25s}
+.practice-card:hover .card-arrow{background:var(--navy);color:white}
+
+/* METHOD */
+.method{background:#e7eff7}
+.method-grid{display:grid;grid-template-columns:1fr 1.45fr}
+.method-photo{min-height:600px;background:url("images/metodo-moira.webp") center/cover;filter:grayscale(.35)}
+.method-copy{padding:80px 7vw}
+.method-copy h2{max-width:680px}
+.steps{margin-top:55px;border-top:1px solid var(--line)}
+.step{display:grid;grid-template-columns:90px 1fr;gap:20px;padding:28px 0;border-bottom:1px solid var(--line)}
+.step-no{font-family:var(--serif);font-size:32px;color:#7e9db9}
+.step h3{font-size:25px;margin:0 0 7px}
+.step p{font-size:13px;color:var(--steel);margin:0;max-width:550px}
+
+/* TRAJECTORY */
+.trajectory{background:white}
+.trajectory-grid{display:grid;grid-template-columns:1.1fr .9fr}
+.trajectory-copy{padding:80px 7vw}
+.trajectory-copy h2{max-width:700px}
+.timeline{margin-top:50px}
+.timeline-item{display:grid;grid-template-columns:120px 1fr;gap:30px;padding:25px 0;border-top:1px solid var(--line)}
+.timeline-year{font-family:var(--serif);font-size:27px;color:var(--steel)}
+.timeline h3{font-family:var(--sans);font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+.timeline p{font-size:13px;color:var(--steel);margin:0}
+.public-panel{background:var(--navy);color:white;padding:80px 55px;position:relative;overflow:hidden}
+.public-panel:after{content:"MDL";position:absolute;right:-35px;bottom:-45px;font-family:var(--serif);font-size:220px;color:rgba(255,255,255,.035)}
+.public-panel h3{color:white;font-size:48px;line-height:1.05}
+.public-panel p{color:rgba(255,255,255,.78)}
+.public-list{margin-top:45px}
+.public-list div{border-top:1px solid rgba(255,255,255,.2);padding:18px 0;font-size:12px;letter-spacing:.05em}
+
+/* FAQ */
+.faq{background:var(--ice)}
+.faq-content{padding:80px 7vw 90px;max-width:820px}
+.accordion{margin-top:40px;border-top:1px solid var(--line)}
+.accordion-item{border-bottom:1px solid var(--line)}
+.accordion-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:26px 4px;background:none;border:0;text-align:left;font-family:var(--serif);font-size:19px;color:var(--navy);cursor:pointer}
+.accordion-icon{font-size:20px;color:var(--steel);transition:transform .3s ease;flex-shrink:0}
+.accordion-trigger[aria-expanded="true"] .accordion-icon{transform:rotate(45deg)}
+.accordion-panel{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.accordion-panel p{padding:0 4px 26px;font-size:14px;color:var(--steel);max-width:640px}
+
+/* CTA FINAL */
+.cta-final{background:var(--navy);color:white;padding:100px 0;text-align:center}
+.cta-final h2{color:white;max-width:780px;margin-inline:auto;font-size:clamp(32px,4vw,52px)}
+.cta-final-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+
+/* CONTACT */
+.contact{background:var(--ice)}
+.contact-grid{display:grid;grid-template-columns:1.2fr .8fr}
+.contact-copy{padding:85px 7vw}
+.contact-copy h2{font-size:clamp(48px,5.5vw,80px)}
+.contact-copy p{max-width:560px;color:var(--steel)}
+.contact-data{border-left:1px solid var(--line);padding:85px 55px;background:#dfe9f3}
+.data-row{padding:22px 0;border-top:1px solid var(--line)}
+.data-row span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--steel);margin-bottom:7px}
+.data-row strong{font-size:15px;color:var(--navy)}
+footer{background:white;border-top:1px solid var(--line)}
+.footer-main{min-height:150px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.footer-brand{color:var(--navy)}
+.footer-links{display:flex;gap:22px;font-size:11px;color:var(--steel)}
+.footer-bottom{border-top:1px solid var(--line);padding:15px 0;font-size:10px;color:#8294a6;display:flex;justify-content:space-between}
+
+/* WHATSAPP */
+.whatsapp{position:fixed;z-index:60;right:22px;bottom:22px;width:58px;height:58px;border-radius:50%;background:#1f9d68;color:white;display:grid;place-items:center;box-shadow:0 12px 30px rgba(0,0,0,.2);transition:.25s}
+.whatsapp:hover{transform:translateY(-4px) scale(1.04)}
+.whatsapp svg{width:28px}
+
+/* MOBILE */
+@media(max-width:900px){
+ .container{width:min(calc(100% - 32px),var(--max))}
+ .nav-links{display:none}
+ .menu{display:block}
+ .nav-inner{height:72px}
+ .brand-copy{font-size:9px}
+ .hero{min-height:760px}
+ .hero-grid{grid-template-columns:52px 1fr;min-height:760px;padding-bottom:60px}
+ .hero-note{display:none}
+ .hero-copy{padding:0 25px}
+ .hero h1{font-size:clamp(50px,13vw,82px)}
+ .hero-lead{font-size:15px}
+ .section-wrap{grid-template-columns:54px 1fr}
+ .section-rail{padding-top:35px}
+ .section-no{width:46px;font-size:22px}
+ .section-name{font-size:8px}
+ .intro-grid,.method-grid,.trajectory-grid,.contact-grid{grid-template-columns:1fr}
+ .intro-photo{min-height:400px;order:2}
+ .quote-panel{min-height:300px}
+ .practice-head{display:block;padding:55px 30px 30px}
+ .practice-grid{grid-template-columns:repeat(2,1fr)}
+ .practice-card:nth-child(4n){border-right:1px solid var(--line)}
+ .practice-card:nth-child(2n){border-right:0}
+ .method-photo{min-height:350px}
+ .method-copy,.trajectory-copy,.contact-copy{padding:60px 30px}
+ .public-panel{padding:60px 30px;min-height:500px}
+ .contact-data{padding:50px 30px;border-left:0;border-top:1px solid var(--line)}
+ .footer-main{padding:35px 0;display:block}
+ .footer-links{margin-top:25px;flex-wrap:wrap}
+ .faq-content{padding:55px 30px 60px}
+ .cta-final{padding:70px 0}
+}
+@media(max-width:520px){
+ .brand-copy{display:none}
+ .brand{gap:8px}
+ .monogram{font-size:32px}
+ .hero-grid{grid-template-columns:1fr;padding-top:80px}
+ .hero-rail{display:none}
+ .hero-copy{padding:0 24px}
+ .hero h1{font-size:52px}
+ .hero-image{background-position:67% center}
+ .practice-grid{grid-template-columns:1fr}
+ .practice-card{border-right:0!important;border-bottom:1px solid var(--line)}
+ .step{grid-template-columns:55px 1fr}
+ .timeline-item{grid-template-columns:80px 1fr;gap:15px}
+ .footer-bottom{display:block;line-height:1.7}
 }
 
-*,*::before,*::after{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:var(--font-body);
-  font-size:16px;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+/* TRANSVERSAL IDENTITY — moving editorial guide + subtle SVG atmosphere */
+.page-guide{
+  position:fixed;z-index:25;left:28px;top:50%;width:1px;height:190px;
+  transform:translateY(-50%);pointer-events:none;opacity:.72;
+  background:linear-gradient(to bottom,transparent,var(--guide-color,#B7C6D9),transparent);
+  transition:top .9s cubic-bezier(.22,.61,.36,1),background .8s ease;
 }
-h1,h2,h3,h4{font-family:var(--font-display);color:var(--navy);line-height:1.12;margin:0;letter-spacing:-0.01em;}
-p{margin:0;}
-a{color:inherit;text-decoration:none;}
-ul{margin:0;padding:0;list-style:none;}
-img,svg{display:block;max-width:100%;}
-button{font-family:inherit;cursor:pointer;background:none;border:none;color:inherit;}
-input,textarea{font-family:inherit;font-size:1rem;}
-
-.container{max-width:1280px;margin-inline:auto;padding-inline:clamp(20px,5vw,64px);}
-.section{padding-block:clamp(64px,9vw,120px);position:relative;}
-.section-head{max-width:640px;margin-bottom:var(--s10);}
-.section-head.center{margin-inline:auto;text-align:center;}
-.eyebrow{
-  display:inline-flex;align-items:center;gap:10px;
-  text-transform:uppercase;letter-spacing:.14em;font-size:.75rem;font-weight:700;
-  color:var(--gold);margin-bottom:var(--s2);
+.page-guide:before,.page-guide:after{
+  content:"";position:absolute;left:-3px;width:7px;height:7px;border-radius:50%;
+  border:1px solid var(--guide-color,#B7C6D9);background:var(--white);
+  transition:all .8s ease;
 }
-.eyebrow::before{content:"";width:22px;height:1.5px;background:var(--gold);display:inline-block;}
-h2.title-lg{font-size:clamp(1.75rem,3vw,2.5rem);}
-.lead{color:var(--text-muted);font-size:1.0625rem;margin-top:var(--s3);}
-
-:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px;}
-.skip-link{
-  position:absolute;left:-999px;top:0;background:var(--navy);color:var(--white);
-  padding:12px 20px;z-index:200;border-radius:0 0 8px 0;
+.page-guide:before{top:20%}.page-guide:after{bottom:20%}
+.page-guide-label{
+  position:absolute;left:13px;top:50%;transform:translateY(-50%);
+  writing-mode:vertical-rl;white-space:nowrap;font-size:8px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--guide-color,#B7C6D9);
+  transition:color .8s ease;
 }
-.skip-link:focus{left:0;}
+.ambient-svg{position:absolute;pointer-events:none;opacity:.34;color:var(--steel)}
+.ambient-svg.one{right:3%;top:12%;width:170px}.ambient-svg.two{left:4%;bottom:8%;width:130px}
+.ambient-svg.three{right:8%;bottom:9%;width:220px;opacity:.2}
+.section-content{position:relative}
+@media(max-width:900px){.page-guide{left:15px;height:140px}.page-guide-label{display:none}}
+@media(max-width:520px){.page-guide{display:none}}
 
-@media (prefers-reduced-motion: reduce){
-  *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;scroll-behavior:auto !important;}
+.map-card{
+  margin-top:34px;position:relative;height:185px;overflow:hidden;
+  border:1px solid rgba(15,45,74,.14);background:#dce7f1;
 }
-
-/* ============ BACKGROUND PATTERN (continuo, único, fijo) ============ */
-.bg-pattern{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer-events:none;}
-.bg-pattern svg{width:100%;height:100%;}
-main,footer{position:relative;z-index:1;}
-
-/* ============ BUTTONS ============ */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  min-height:52px;padding:14px 30px;border-radius:var(--radius-pill);
-  font-weight:600;font-size:.9375rem;white-space:nowrap;
-  transition:transform 200ms var(--ease), box-shadow 200ms var(--ease), background 200ms var(--ease), border-color 200ms var(--ease), color 200ms var(--ease);
+.map-card iframe{
+  position:absolute;inset:0;width:100%;height:100%;border:0;
+  filter:grayscale(1) sepia(.12) hue-rotate(165deg) saturate(.72) contrast(.9) brightness(1.06);
+  opacity:.82;
 }
-.btn-primary{background:var(--gold);color:var(--navy);box-shadow:0 1px 2px rgba(18,36,61,.1);}
-.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:var(--shadow-md);}
-.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--line);}
-.btn-outline:hover{border-color:var(--navy);transform:translateY(-2px);}
-.btn-on-navy{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.28);}
-.btn-on-navy:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.5);}
-.btn-sm{min-height:44px;padding:10px 22px;font-size:.875rem;}
-.icon-arrow{width:16px;height:16px;transition:transform 200ms var(--ease);}
-.btn:hover .icon-arrow, .card-link:hover .icon-arrow{transform:translateX(4px);}
-
-/* ============ HEADER ============ */
-.site-header{
-  position:sticky;top:0;z-index:100;height:var(--header-h);
-  display:flex;align-items:center;
-  background:rgba(248,246,241,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid transparent;
-  transition:height 250ms var(--ease), border-color 250ms var(--ease), box-shadow 250ms var(--ease);
+.map-card:after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(135deg,rgba(183,198,217,.30),rgba(15,45,74,.08));
+  mix-blend-mode:multiply;
 }
-.site-header.is-scrolled{height:72px;border-bottom-color:var(--line);box-shadow:0 1px 12px rgba(18,36,61,.05);}
-.header-inner{width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--s4);}
-.logo{display:flex;align-items:center;gap:12px;}
-.logo-mark{
-  width:44px;height:44px;border-radius:10px;background:var(--navy);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-}
-.logo-mark span{font-family:'Plus Jakarta Sans',serif;font-weight:700;font-size:1.05rem;color:var(--white);}
-.logo-mark span em{color:var(--gold);font-style:normal;}
-
-.logo-mark{animation:logoIn 700ms cubic-bezier(.4,0,.2,1) both;transition:transform 250ms ease;}
-.logo:hover .logo-mark{transform:scale(1.06) rotate(-2deg);}
-.logo-mark span em{animation:goldIn 500ms ease 550ms both;}
-
-@keyframes logoIn{
-  0%{opacity:0;transform:scale(.8) rotate(-8deg);}
-  100%{opacity:1;transform:scale(1) rotate(0deg);}
-}
-@keyframes goldIn{
-  from{color:#FFFFFF;}
-  to{color:var(--gold);}
-}
-.logo-text{display:flex;flex-direction:column;line-height:1.25;}
-.logo-text b{font-size:.9rem;letter-spacing:.02em;color:var(--navy);font-weight:700;}
-.logo-text small{font-size:.6875rem;letter-spacing:.14em;color:var(--gold);font-weight:700;text-transform:uppercase;}
-
-.main-nav ul{display:flex;align-items:center;gap:var(--s6);}
-.main-nav a{
-  font-size:.9375rem;font-weight:500;color:var(--navy);position:relative;padding:6px 0;
-}
-.main-nav a::after{
-  content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--gold);
-  transition:width 200ms var(--ease);
-}
-.main-nav a:hover::after,.main-nav a.active::after{width:100%;}
-.main-nav a.active{color:var(--navy);font-weight:700;}
-
-.header-actions{display:flex;align-items:center;gap:var(--s3);}
-.nav-toggle{display:none;width:44px;height:44px;align-items:center;justify-content:center;border-radius:8px;}
-.nav-toggle svg{width:22px;height:22px;}
-
-@media (max-width:960px){
-  .main-nav{
-    position:fixed;inset:72px 0 0 0;background:var(--bg);
-    transform:translateY(-8px);opacity:0;visibility:hidden;pointer-events:none;
-    transition:opacity 220ms var(--ease), transform 220ms var(--ease), visibility 220ms;
-    overflow-y:auto;padding:var(--s6) 0;
-  }
-  .main-nav.is-open{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto;}
-  .main-nav ul{flex-direction:column;align-items:stretch;gap:0;padding-inline:24px;}
-  .main-nav a{display:block;padding:16px 0;font-size:1.05rem;border-bottom:1px solid var(--line);}
-  .header-actions .btn-primary.btn-sm{display:none;}
-  .nav-toggle{display:flex;}
+.map-label{
+  position:absolute;z-index:2;left:18px;bottom:15px;
+  padding:8px 11px;background:rgba(243,246,250,.9);
+  color:var(--navy);font-size:9px;letter-spacing:.12em;text-transform:uppercase;
 }
 
-/* ============ HERO ============ */
-.hero{padding-top:clamp(48px,8vw,88px);padding-bottom:clamp(56px,8vw,96px);scroll-margin-top:var(--header-h);}
-.hero{
-  background-image:linear-gradient(180deg, rgba(18,36,61,.55), rgba(18,36,61,.8)), url('portada.jpg');
-  background-size:cover;
-  background-position:center;
-  min-height:88vh;
-  display:flex;
-  align-items:center;
+.logo-img{
+  width:72px;height:auto;display:block;object-fit:contain;
+  transition:filter .3s ease,transform .3s ease;
 }
-@media (min-width:961px){
-  .hero .hero-grid{grid-template-columns:1.15fr .85fr;max-width:1280px;}
-}
-@media (max-width:960px){
-  .hero{min-height:auto;padding-top:32px;}
-  .hero .float-cards{justify-content:center;}
-}
-.hero .hero-title{color:#FFFFFF;}
-.hero .hero-title .accent{color:var(--gold-light);}
-.hero .eyebrow{color:var(--gold-light);}
-.hero .eyebrow::before{background:var(--gold-light);}
-.hero .lead{color:rgba(255,255,255,.85);}
-.hero .badge{color:#FFFFFF;}
-.hero .badge-ic{border-color:rgba(255,255,255,.5);color:var(--gold-light);}
-.hero .btn-outline{color:#FFFFFF;border-color:rgba(255,255,255,.4);}
-.hero .btn-outline:hover{border-color:#FFFFFF;background:rgba(255,255,255,.08);}
-.hero .hero-panel{display:none;}
-.hero .hero-visual{aspect-ratio:auto;display:flex;align-items:center;justify-content:flex-end;}
-.hero .float-cards{position:static;transform:none;}
-.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(32px,6vw,80px);align-items:center;}
-.hero-title{font-size:clamp(2.25rem,4.6vw,3.75rem);font-weight:700;}
-.hero-title .accent{color:var(--gold);}
-.hero-copy .lead{max-width:460px;}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5);}
-.badges{display:flex;flex-wrap:wrap;gap:var(--s5);margin-top:var(--s8);}
-.badge{display:flex;align-items:center;gap:10px;font-size:.875rem;font-weight:600;color:var(--navy);}
-.badge .badge-ic{
-  width:34px;height:34px;border-radius:50%;border:1.5px solid var(--gold);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold);
-}
-.badge .badge-ic svg{width:16px;height:16px;}
-
-.hero-visual{position:relative;aspect-ratio:1/1.02;}
-.hero-panel{
-  position:absolute;inset:0;border-radius:var(--radius-lg);overflow:hidden;
-  background:linear-gradient(155deg,var(--navy) 0%, var(--navy-2) 60%, #0E1E33 100%);
-  box-shadow:var(--shadow-md);
-}
-.hero-panel svg{width:100%;height:100%;}
-.float-cards{position:absolute;right:-8px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:14px;}
-.float-card{
-  background:var(--white);border-radius:var(--radius-md);box-shadow:var(--shadow-card);
-  padding:16px 22px;display:flex;align-items:center;gap:14px;min-width:172px;
-}
-.float-card .fc-ic{width:38px;height:38px;border-radius:50%;background:var(--gray);display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0;}
-.float-card .fc-ic svg{width:18px;height:18px;}
-.float-card b{display:block;font-family:var(--font-display);font-size:1.375rem;color:var(--navy);line-height:1;}
-.float-card span{font-size:.8125rem;color:var(--text-muted);}
-
-@media (max-width:960px){
-  .hero-grid{grid-template-columns:1fr;}
-  .hero-visual{aspect-ratio:16/11;margin-top:var(--s6);}
-  .float-cards{right:12px;left:auto;top:auto;bottom:16px;transform:none;flex-direction:row;flex-wrap:wrap;justify-content:flex-end;}
-  .float-card{min-width:0;padding:12px 16px;}
-}
-@media (max-width:520px){
-  .badges{gap:var(--s3);}
-}
-
-/* ============ CARDS SERVICIOS ============ */
-.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4);}
-.service-card{
-  background:var(--white);border:1px solid var(--line);border-radius:var(--radius-md);
-  padding:var(--s5) var(--s4);
-  transition:transform 240ms var(--ease), box-shadow 240ms var(--ease), border-color 240ms var(--ease);
-  position:relative;overflow:hidden;
-}
-.service-card::before{
-  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
-  background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%), rgba(184,150,70,.16), transparent 70%);
-  opacity:0;transition:opacity 300ms ease;
-}
-.service-card:hover::before{opacity:1;}
-.service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:transparent;}
-.card-ic{
-  width:52px;height:52px;border-radius:var(--radius-sm);background:var(--gray);
-  display:flex;align-items:center;justify-content:center;color:var(--navy);margin-bottom:var(--s4);
-  transition:background 240ms var(--ease), color 240ms var(--ease);
-}
-.card-ic svg{width:24px;height:24px;}
-.service-card:hover .card-ic{background:var(--navy);color:var(--gold);}
-.service-card h3{font-size:1.0625rem;margin-bottom:8px;}
-.service-card p{color:var(--text-muted);font-size:.9rem;margin-bottom:var(--s3);}
-.card-link{display:inline-flex;align-items:center;gap:8px;font-size:.875rem;font-weight:700;color:var(--navy);}
-.card-link svg{width:15px;height:15px;color:var(--gold);}
-.services-more{text-align:center;margin-top:var(--s8);}
-
-@media (max-width:1080px){.services-grid{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:560px){.services-grid{grid-template-columns:1fr;}}
-
-/* ============ SOBRE EL ESTUDIO ============ */
-.about-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(32px,6vw,80px);align-items:center;}
-#sobre-estudio{
-  background-image:linear-gradient(180deg, rgba(18,36,61,.55), rgba(18,36,61,.8)), url('estudio.jpg');
-  background-size:cover;
-  background-position:center;
-}
-#sobre-estudio h2{color:#FFFFFF;}
-#sobre-estudio .eyebrow{color:var(--gold-light);}
-#sobre-estudio .eyebrow::before{background:var(--gold-light);}
-#sobre-estudio .lead{color:rgba(255,255,255,.85);}
-#sobre-estudio .value-row span{color:#FFFFFF;}
-#sobre-estudio .v-ic{background:rgba(255,255,255,.15);color:var(--gold-light);}
-#sobre-estudio .btn-outline{color:#FFFFFF;border-color:rgba(255,255,255,.4);}
-#sobre-estudio .btn-outline:hover{border-color:#FFFFFF;background:rgba(255,255,255,.08);}
-#sobre-estudio .about-visual{display:none;}
-.about-visual{aspect-ratio:4/3.1;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);}
-.about-visual svg{width:100%;height:100%;}
-.about-values{display:flex;flex-direction:column;gap:var(--s3);margin:var(--s5) 0 var(--s5);}
-.value-row{display:flex;align-items:flex-start;gap:14px;}
-.value-row .v-ic{
-  width:38px;height:38px;border-radius:50%;background:var(--gray);color:var(--gold);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-}
-.value-row .v-ic svg{width:17px;height:17px;}
-.value-row span{font-size:.9375rem;font-weight:600;color:var(--navy);padding-top:8px;}
-
-@media (max-width:960px){.about-grid{grid-template-columns:1fr;}.about-visual{order:-1;}}
-
-/* ============ PROCESO ============ */
-.process{background:var(--gray);}
-.process-track{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--s3);position:relative;margin-top:var(--s10);}
-.process-track::before{
-  content:"";position:absolute;top:23px;left:9%;right:9%;height:1.5px;
-  background:linear-gradient(90deg,var(--gold) 0%, rgba(184,150,70,.25) 100%);
-}
-.process-step{position:relative;text-align:center;padding-top:0;}
-.process-num{
-  width:46px;height:46px;border-radius:50%;border:1.5px solid var(--gold);background:var(--bg);
-  display:flex;align-items:center;justify-content:center;margin:0 auto var(--s3);position:relative;z-index:1;
-  font-family:var(--font-display);font-weight:700;color:var(--navy);font-size:1rem;
-}
-.process-step h3{font-size:1rem;margin-bottom:6px;}
-.process-step p{font-size:.8438rem;color:var(--text-muted);}
-
-@media (max-width:860px){
-  .process-track{grid-template-columns:1fr;gap:var(--s6);text-align:left;}
-  .process-track::before{display:none;}
-  .process-step{display:flex;gap:var(--s3);text-align:left;align-items:flex-start;}
-  .process-num{margin:0;flex-shrink:0;}
-}
-
-/* ============ STATS ============ */
-.stats-band{background:var(--navy);color:var(--white);position:relative;overflow:hidden;padding-block:clamp(72px,10vw,130px);}
-.stats-band{
-  background-image:linear-gradient(180deg, rgba(10,16,26,.25), rgba(10,16,26,.6)), url('premium.png');
-  background-size:cover;
-  background-position:center;
-}
-.stats-band .bg-arcs{display:none;}
-.stats-band .stat-ic{display:none;}
-.stats-band .bg-arcs{position:absolute;inset:0;opacity:.5;pointer-events:none;}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4);position:relative;}
-.stat{text-align:center;}
-.stat .stat-ic{width:40px;height:40px;margin:0 auto 14px;color:var(--gold);}
-.stat .stat-ic svg{width:100%;height:100%;}
-.stat b{display:block;font-family:var(--font-display);font-size:clamp(1.75rem,3.4vw,2.5rem);font-weight:700;}
-.stat span{font-size:.875rem;color:rgba(255,255,255,.65);}
-@media (max-width:760px){.stats-grid{grid-template-columns:repeat(2,1fr);row-gap:var(--s8);}}
-
-/* ============ TESTIMONIOS ============ */
-.testi-track{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4);}
-.testi-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--s5);}
-.stars{display:flex;gap:4px;color:var(--gold);margin-bottom:var(--s3);}
-.stars svg{width:16px;height:16px;}
-.testi-card p{font-size:.9688rem;color:var(--text);margin-bottom:var(--s4);line-height:1.65;}
-.testi-name b{display:block;font-size:.9375rem;color:var(--navy);}
-.testi-name span{font-size:.8125rem;color:var(--text-muted);}
-.testi-dots{display:none;justify-content:center;gap:8px;margin-top:var(--s6);}
-.testi-dots button{width:8px;height:8px;border-radius:50%;background:var(--line);}
-.testi-dots button.active{background:var(--gold);}
-
-@media (max-width:900px){
-  .testi-track{grid-template-columns:100%;grid-auto-flow:column;grid-auto-columns:86%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;-webkit-overflow-scrolling:touch;}
-  .testi-track::-webkit-scrollbar{display:none;}
-  .testi-card{scroll-snap-align:center;}
-  .testi-dots{display:flex;}
-}
-
-/* ============ FAQ ============ */
-.faq-list{max-width:820px;margin-inline:auto;border-top:1px solid var(--line);}
-.faq-item{border-bottom:1px solid var(--line);}
-.faq-q{
-  width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--s3);
-  padding:var(--s4) 4px;text-align:left;font-size:1.0625rem;font-weight:600;color:var(--navy);
-}
-.faq-q svg{width:20px;height:20px;flex-shrink:0;color:var(--gold);transition:transform 240ms var(--ease);}
-.faq-item[data-open="true"] .faq-q svg{transform:rotate(180deg);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height 280ms var(--ease);}
-.faq-a p{color:var(--text-muted);padding:0 4px var(--s4);max-width:680px;font-size:.9375rem;}
-
-/* ============ CTA ============ */
-.cta-band{background:var(--navy);border-radius:var(--radius-lg);position:relative;overflow:hidden;padding:clamp(48px,7vw,80px) clamp(24px,6vw,72px);text-align:center;color:var(--white);}
-.cta-band h2{color:var(--white);font-size:clamp(1.5rem,3vw,2.25rem);max-width:640px;margin-inline:auto;}
-.cta-band p{color:rgba(255,255,255,.72);margin-top:var(--s3);}
-.cta-band .btn{margin-top:var(--s6);}
-.cta-arcs{position:absolute;inset:0;opacity:.45;pointer-events:none;}
-
-/* ============ CONTACTO ============ */
-.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,64px);align-items:start;}
-.form-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--s6);box-shadow:var(--shadow-card);}
-.field{margin-bottom:var(--s4);}
-.field label{display:block;font-size:.8438rem;font-weight:600;color:var(--navy);margin-bottom:8px;}
-.field input,.field textarea{
-  width:100%;min-height:48px;padding:12px 16px;border-radius:var(--radius-sm);
-  border:1.5px solid var(--line);background:var(--bg);color:var(--text);
-  transition:border-color 180ms var(--ease), background 180ms var(--ease);
-}
-.field textarea{min-height:120px;resize:vertical;}
-.field input:focus,.field textarea:focus{border-color:var(--gold);background:var(--white);outline:none;}
-.hp-field{position:absolute;left:-9999px;}
-.form-note{font-size:.8125rem;color:var(--text-muted);margin-top:var(--s2);}
-
-.info-card{display:flex;flex-direction:column;gap:var(--s3);margin-bottom:var(--s5);}
-.info-row{display:flex;align-items:flex-start;gap:14px;}
-.info-row .i-ic{width:38px;height:38px;border-radius:50%;background:var(--gray);color:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.info-row .i-ic svg{width:17px;height:17px;}
-.info-row b{display:block;font-size:.9375rem;color:var(--navy);}
-.info-row span{font-size:.875rem;color:var(--text-muted);}
-.map-wrap{border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--line);aspect-ratio:16/10;}
-.map-wrap iframe{width:100%;height:100%;border:0;}
-.social-row{display:flex;gap:10px;margin-top:var(--s4);}
-.social-row a{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--navy);transition:all 200ms var(--ease);}
-.social-row a:hover{background:var(--navy);border-color:var(--navy);color:var(--gold);}
-.social-row svg{width:17px;height:17px;}
-
-@media (max-width:920px){.contact-grid{grid-template-columns:1fr;}}
-
-/* ============ FOOTER ============ */
-.site-footer{background:var(--gray);padding-block:var(--s10) var(--s6);}
-.footer-grid{display:grid;grid-template-columns:1.3fr .8fr 1fr;gap:var(--s8);padding-bottom:var(--s8);border-bottom:1px solid var(--line);}
-.footer-brand p{color:var(--text-muted);font-size:.9rem;margin-top:var(--s3);max-width:320px;}
-.footer-col h4{font-size:.8438rem;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);margin-bottom:var(--s3);}
-.footer-col ul li{margin-bottom:10px;}
-.footer-col a{font-size:.9rem;color:var(--text-muted);}
-.footer-col a:hover{color:var(--gold);}
-.footer-bottom{display:flex;flex-wrap:wrap;gap:var(--s3);justify-content:space-between;align-items:center;padding-top:var(--s5);font-size:.8125rem;color:var(--text-muted);}
-.footer-legal{display:flex;gap:var(--s4);}
-@media (max-width:820px){.footer-grid{grid-template-columns:1fr;gap:var(--s6);}}
-
-/* ============ WHATSAPP FLOAT ============ */
-.wa-float{
-  position:fixed;right:24px;bottom:24px;width:58px;height:58px;border-radius:50%;
-  background:var(--navy);color:var(--gold);display:flex;align-items:center;justify-content:center;
-  box-shadow:var(--shadow-md);z-index:90;transition:transform 200ms var(--ease);
-}
-.wa-float:hover{transform:scale(1.08);}
-.wa-float svg{width:26px;height:26px;}
-
-/* ============ SCROLL REVEAL ============ */
-.reveal{opacity:0;transition:opacity 700ms var(--ease), transform 700ms var(--ease);}
-.reveal[data-anim="up"]{transform:translateY(28px);}
-.reveal[data-anim="left"]{transform:translateX(-28px);}
-.reveal[data-anim="right"]{transform:translateX(28px);}
-.reveal.is-visible{opacity:1;transform:none;}
+.site-nav.scrolled .logo-img{filter:none}
+.logo-fallback{display:none}
+@media(max-width:520px){.logo-img{width:60px}}
 </style>
 </head>
 <body>
-<a class="skip-link" href="#main">Saltar al contenido</a>
-
-<!-- Fondo geométrico único y continuo -->
-<div class="bg-pattern" aria-hidden="true">
-  <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-    <defs>
-      <pattern id="dots" width="46" height="46" patternUnits="userSpaceOnUse">
-        <circle cx="1" cy="1" r="1" fill="#12243D" opacity="0.05"/>
-      </pattern>
-    </defs>
-    <rect width="100%" height="100%" fill="url(#dots)"/>
-    <line x1="-10%" y1="0%" x2="55%" y2="120%" stroke="#12243D" stroke-width="1" opacity="0.03"/>
-    <line x1="30%" y1="-10%" x2="105%" y2="70%" stroke="#B89646" stroke-width="1" opacity="0.04"/>
-    <polygon points="70,40 260,10 300,190 90,220" fill="#12243D" opacity="0.02"/>
-    <path d="M -50 500 Q 400 380 900 560" stroke="#12243D" stroke-width="1" fill="none" opacity="0.03"/>
-    <circle cx="88%" cy="18%" r="220" fill="none" stroke="#B89646" stroke-width="1" opacity="0.035"/>
-  </svg>
+<div class="page-guide" id="pageGuide" aria-hidden="true">
+  <span class="page-guide-label" id="guideLabel">Estudio · Derecho · Realidades</span>
 </div>
 
-<header class="site-header" id="siteHeader">
-  <div class="container header-inner">
-    <a href="#inicio" class="logo" aria-label="Leguizamón & Asociados, inicio">
-      <span class="logo-mark"><span>L<em>&amp;</em>A</span></span>
-      <span class="logo-text"><b>Leguizamón &amp; Asociados</b><small>Estudio Jurídico</small></span>
+
+<!--
+  SISTEMA DE INTERACCIÓN:
+  - Header transparente sobre el hero; al hacer scroll se vuelve blanco y compacto.
+  - Cada sección se revela progresivamente con IntersectionObserver.
+  - Los botones con anclas hacen scroll suave a las secciones.
+  - Tarjetas de áreas tienen microinteracción hover y CTA.
+  - El eje lateral 01–06 funciona como hilo conductor visual.
+  - WhatsApp permanece flotante en desktop y mobile.
+-->
+
+<header class="site-nav" id="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#inicio" aria-label="Inicio">
+      <img class="logo-img" src="images/logo-mdl.webp" alt="Estudio Moira Dolera Lembeye y Asociados">
+      <div class="brand-copy">ESTUDIO<br><strong>MOIRA DOLERA LEMBEYE</strong><br><span>Y ASOCIADOS</span></div>
     </a>
-
-    <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
-      <ul>
-        <li><a href="#inicio" class="active">Inicio</a></li>
-        <li><a href="#especialidades">Especialidades</a></li>
-        <li><a href="#sobre-estudio">Sobre el estudio</a></li>
-        <li><a href="#como-trabajamos">Cómo trabajamos</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
+    <nav class="nav-links" aria-label="Navegación principal">
+      <a href="#estudio">Estudio</a>
+      <a href="#areas">Áreas</a>
+      <a href="#metodo">Cómo trabajamos</a>
+      <a href="#trayectoria">Trayectoria</a>
+      <a href="#contacto">Contacto</a>
     </nav>
-
-    <div class="header-actions">
-      <a href="#contacto" class="btn btn-primary btn-sm">Solicitar consulta</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainNav">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-      </button>
-    </div>
+    <a class="btn light" href="#contacto">Consultá tu caso <span class="arrow">→</span></a>
+    <button class="menu" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">☰</button>
   </div>
 </header>
 
-<main id="main">
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+  <div class="mobile-menu-top">
+    <span class="brand-copy" style="border-left:0;padding-left:0">ESTUDIO MDL</span>
+    <button class="mobile-menu-close" id="menuCloseBtn" aria-label="Cerrar menú">✕</button>
+  </div>
+  <nav class="mobile-menu-links" aria-label="Navegación principal (mobile)">
+    <a href="#estudio">Estudio</a>
+    <a href="#areas">Áreas</a>
+    <a href="#metodo">Cómo trabajamos</a>
+    <a href="#trayectoria">Trayectoria</a>
+    <a href="#preguntas">Preguntas frecuentes</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+  <div class="mobile-menu-cta">
+    <a class="btn light" href="#contacto" style="width:100%">Consultá tu caso <span class="arrow">→</span></a>
+  </div>
+</div>
 
-  <!-- HERO -->
-  <section class="hero" id="inicio">
-    <div class="container hero-grid">
-      <div class="hero-copy reveal" data-anim="up">
-        <span class="eyebrow">Experiencia. Compromiso. Resultados.</span>
-        <h1 class="hero-title">Asesoramiento jurídico claro para tomar <span class="accent">mejores decisiones</span>.</h1>
-        <p class="lead">Acompañamos a personas y empresas en la resolución de sus asuntos legales con transparencia, compromiso y cercanía.</p>
-        <div class="hero-ctas">
-          <a href="#contacto" class="btn btn-primary">Solicitar consulta
-            <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-          <a href="#especialidades" class="btn btn-outline">Ver especialidades</a>
+
+<!--
+IMÁGENES WEBP ESPERADAS:
+images/logo-mdl.webp
+images/hero-moira.webp
+images/estudio-moira.webp
+images/metodo-moira.webp
+images/trayectoria-moira.webp
+images/mirada-publica.webp
+images/contacto-moira.webp
+-->
+<main>
+<section class="hero section" id="inicio">
+  <div class="hero-image" aria-hidden="true"></div>
+  <div class="container hero-grid">
+    <div class="hero-rail">
+      <div class="rail-number">01</div>
+      <div class="rail-label">Derecho · personas · realidad</div>
+    </div>
+    <div class="hero-copy reveal">
+      <div class="eyebrow" style="color:#d9e6f2">Estudio Moira Dolera Lembeye y Asociados</div>
+      <h1>El derecho como una herramienta para transformar realidades.</h1>
+      <p class="hero-lead">Asesoramiento jurídico con experiencia, cercanía y una mirada práctica sobre cada realidad.</p>
+      <div class="hero-actions">
+        <a class="btn light" href="#contacto">Consultá tu caso <span class="arrow">→</span></a>
+        <a class="btn" style="border-color:rgba(255,255,255,.7);color:white" href="#estudio">Conocé el estudio <span class="arrow">↓</span></a>
+      </div>
+    </div>
+    <aside class="hero-note reveal delay2">
+      <p>“El derecho también necesita escuchar la realidad.”</p>
+      <small>Moira Dolera Lembeye · Abogada</small>
+    </aside>
+  </div>
+</section>
+
+<section class="section intro" id="estudio"><svg class="ambient-svg one" viewBox="0 0 180 180" fill="none" aria-hidden="true">
+<circle cx="90" cy="90" r="64" stroke="currentColor"/><circle cx="90" cy="90" r="43" stroke="currentColor" opacity=".55"/>
+<path d="M18 90h144M90 18v144" stroke="currentColor" opacity=".5"/><path d="M46 46l88 88M134 46 46 134" stroke="currentColor" opacity=".28"/>
+</svg>
+  <div class="section-wrap">
+    <aside class="section-rail"><div class="section-no">02</div><div class="section-name">Nuestro estudio</div></aside>
+    <div class="section-content intro-grid">
+      <div class="intro-photo reveal"></div>
+      <div class="intro-copy reveal delay2">
+        <div class="eyebrow">Nuestro estudio</div>
+        <h2>Más que un estudio, una forma de concebir el derecho.</h2>
+        <p>Un espacio profesional orientado a comprender cada situación, ordenar alternativas y acompañar decisiones jurídicas con claridad.</p>
+        <p>La práctica combina una mirada técnica con una comunicación cercana, porque detrás de cada consulta hay una persona, una familia, un trabajo o un proyecto.</p>
+        <a class="btn outline" href="#metodo">Así trabajamos <span class="arrow">→</span></a>
+      </div>
+      <div class="quote-panel reveal delay3">
+        <div class="quote-mark">“</div>
+        <p>Personas. Derechos. Soluciones reales.</p>
+        <div class="eyebrow">Una mirada centrada en el cliente</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section practice" id="areas">
+  <div class="section-wrap">
+    <aside class="section-rail"><div class="section-no">03</div><div class="section-name">Áreas de práctica</div></aside>
+    <div class="section-content">
+      <div class="practice-head reveal">
+        <div>
+          <div class="eyebrow">Áreas de práctica</div>
+          <h2>¿En qué podemos ayudarte?</h2>
         </div>
-        <div class="badges">
-          <div class="badge"><span class="badge-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Atención personalizada</div>
-          <div class="badge"><span class="badge-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Consultas presenciales y online</div>
-          <div class="badge"><span class="badge-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Más de 15 años de experiencia</div>
+        <div>
+          <p>Asesoramiento jurídico en distintas áreas, con una mirada práctica y orientada a tus necesidades.</p>
+          <a href="#contacto" class="btn outline">Consultar <span class="arrow">→</span></a>
         </div>
       </div>
+      <div class="practice-grid">
+        <article class="practice-card reveal">
+          <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M24 7v32M12 15h24M9 38h30M12 15l-6 15h12l-6-15Zm24 0-6 15h12l-6-15Z"/></svg>
+          <h3>Derecho Civil</h3><p>Contratos, conflictos y derechos personales.</p><span class="card-arrow">→</span>
+        </article>
+        <article class="practice-card reveal delay2">
+          <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="17" cy="14" r="6"/><circle cx="32" cy="16" r="5"/><path d="M5 37c0-8 5-12 12-12s12 4 12 12M27 27c6-1 11 2 13 10"/></svg>
+          <h3>Derecho de Familia</h3><p>Acompañamiento en momentos sensibles.</p><span class="card-arrow">→</span>
+        </article>
+        <article class="practice-card reveal delay3">
+          <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 17h32v23H8zM14 17v-6h20v6M18 27h12"/></svg>
+          <h3>Derecho Laboral</h3><p>Asesoramiento sobre derechos y relaciones de trabajo.</p><span class="card-arrow">→</span>
+        </article>
+        <article class="practice-card reveal">
+          <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 37V9h32v28M14 30l6-7 5 4 8-11"/></svg>
+          <h3>Derecho Comercial</h3><p>Empresas, contratos y asesoramiento societario.</p><span class="card-arrow">→</span>
+        </article>
+        <article class="practice-card reveal delay2">
+          <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 8h20l5 8H9l5-8Zm-4 8h28v24H10zM18 22h12"/></svg>
+          <h3>Sucesiones</h3><p>Planificación y gestión del proceso sucesorio.</p><span class="card-arrow">→</span>
+        </article>
+        <article class="practice-card reveal delay3">
+          <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M24 6 9 12v10c0 10 6 16 15 20 9-4 15-10 15-20V12L24 6Z"/><path d="m17 24 5 5 10-11"/></svg>
+          <h3>Amparos</h3><p>Defensa y protección de derechos fundamentales.</p><span class="card-arrow">→</span>
+        </article>
+        <article class="practice-card reveal">
+          <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h30v22H9zM14 39h20M17 17h14M17 23h9"/></svg>
+          <h3>Derecho del Consumidor</h3><p>Relaciones más claras y protección de derechos.</p><span class="card-arrow">→</span>
+        </article>
+        <article class="practice-card reveal delay2">
+          <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 23 24 9l18 14v17H6V23Z"/><path d="M19 40V27h10v13"/></svg>
+          <h3>Derecho Inmobiliario</h3><p>Asesoramiento integral en bienes y operaciones.</p><span class="card-arrow">→</span>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="hero-visual reveal" data-anim="right">
-        <div class="hero-panel">
-          <img src="portada.jpg" alt="Estudio jurídico" style="width:100%;height:100%;object-fit:cover;display:block;">
-          <svg viewBox="0 0 520 540" preserveAspectRatio="xMidYMid slice">
-            <defs>
-              <linearGradient id="shelfGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#D9C08C" stop-opacity=".18"/>
-                <stop offset="1" stop-color="#B89646" stop-opacity="0"/>
-              </linearGradient>
-            </defs>
-            <rect width="520" height="540" fill="url(#shelfGrad)"/>
-            <circle cx="420" cy="120" r="150" stroke="#B89646" stroke-width="1" fill="none" opacity=".35"/>
-            <circle cx="70" cy="430" r="110" stroke="#B89646" stroke-width="1" fill="none" opacity=".25"/>
-            <!-- estantería abstracta -->
-            <g opacity=".9">
-              <rect x="60" y="240" width="400" height="14" fill="#0E1E33"/>
-              <rect x="60" y="360" width="400" height="14" fill="#0E1E33"/>
-              <g fill="#B89646">
-                <rect x="80" y="150" width="26" height="88" opacity=".85"/>
-                <rect x="112" y="130" width="22" height="108" opacity=".6"/>
-                <rect x="140" y="160" width="30" height="78" opacity=".7"/>
-                <rect x="178" y="140" width="20" height="98" opacity=".5"/>
-                <rect x="204" y="155" width="26" height="83" opacity=".8"/>
-                <rect x="236" y="120" width="22" height="118" opacity=".45"/>
-                <rect x="264" y="145" width="30" height="93" opacity=".65"/>
-              </g>
-              <g fill="#1B3556">
-                <rect x="80" y="270" width="22" height="88" opacity=".9"/>
-                <rect x="108" y="285" width="30" height="73" opacity=".7"/>
-                <rect x="144" y="265" width="20" height="93" opacity=".8"/>
-                <rect x="170" y="290" width="26" height="68" opacity=".6"/>
-                <rect x="202" y="270" width="22" height="88" opacity=".85"/>
-                <rect x="230" y="280" width="30" height="78" opacity=".5"/>
-              </g>
-            </g>
-            <line x1="40" y1="420" x2="480" y2="420" stroke="#B89646" stroke-width="1.5" opacity=".55"/>
-            <rect x="150" y="420" width="220" height="8" fill="#0E1E33" opacity=".8"/>
-            <circle cx="260" cy="424" r="46" fill="none" stroke="#B89646" stroke-width="1" opacity=".4"/>
-          </svg>
-        </div>
-        <div class="float-cards">
-          <div class="float-card"><span class="fc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></span><div><b>15+</b><span>Años</span></div></div>
-          <div class="float-card"><span class="fc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7l-9-5Z"/></svg></span><div><b>1200+</b><span>Casos</span></div></div>
-          <div class="float-card"><span class="fc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17.3 6.2 20l1.1-6.4L2.5 9l6.5-.9L12 2.3l3 5.8 6.5.9-4.8 4.6L17.8 20Z"/></svg></span><div><b>98%</b><span>Satisfacción</span></div></div>
+<section class="section method" id="metodo"><svg class="ambient-svg two" viewBox="0 0 160 160" fill="none" aria-hidden="true">
+<path d="M20 120 80 20l60 100H20Z" stroke="currentColor"/>
+<path d="M48 120 80 70l32 50" stroke="currentColor" opacity=".55"/>
+<circle cx="80" cy="70" r="5" stroke="currentColor"/>
+</svg>
+  <div class="section-wrap">
+    <aside class="section-rail"><div class="section-no">04</div><div class="section-name">Cómo trabajamos</div></aside>
+    <div class="section-content method-grid">
+      <div class="method-photo reveal"></div>
+      <div class="method-copy">
+        <div class="eyebrow reveal">Cómo trabajamos</div>
+        <h2 class="reveal delay2">Un proceso claro, para que sepas dónde estás y hacia dónde avanzar.</h2>
+        <p class="reveal delay3">La primera consulta no es una carrera por responder. Es el momento de entender el problema, ordenar la información y definir el próximo paso.</p>
+        <div class="steps">
+          <div class="step reveal"><div class="step-no">01</div><div><h3>Escuchamos</h3><p>Conocemos tu situación y la información relevante, con confidencialidad y atención.</p></div></div>
+          <div class="step reveal delay2"><div class="step-no">02</div><div><h3>Analizamos</h3><p>Evaluamos el escenario jurídico y las alternativas disponibles.</p></div></div>
+          <div class="step reveal delay3"><div class="step-no">03</div><div><h3>Definimos</h3><p>Diseñamos una estrategia adecuada al caso y a tus objetivos.</p></div></div>
+          <div class="step reveal"><div class="step-no">04</div><div><h3>Acompañamos</h3><p>Seguimos cada etapa con comunicación clara y seguimiento profesional.</p></div></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ESPECIALIDADES -->
-  <section class="section" id="especialidades">
-    <div class="container">
-      <div class="section-head reveal" data-anim="up">
-        <span class="eyebrow">Especialidades</span>
-        <h2 class="title-lg">Áreas de práctica</h2>
-      </div>
-      <div class="services-grid">
-
-        <article class="service-card reveal" data-anim="up">
-          <span class="card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
-          <h3>Derecho Civil</h3>
-          <p>Asesoramiento en obligaciones, contratos, daños y perjuicios, propiedad y más.</p>
-          <span class="card-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </article>
-
-        <article class="service-card reveal" data-anim="up">
-          <span class="card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></span>
-          <h3>Derecho Laboral</h3>
-          <p>Despidos, indemnizaciones, accidentes de trabajo y relaciones laborales.</p>
-          <span class="card-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </article>
-
-        <article class="service-card reveal" data-anim="up">
-          <span class="card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8.5 8 9 4.5-.5 8-4 8-9V6l-8-3Z"/></svg></span>
-          <h3>Derecho Penal</h3>
-          <p>Defensa y representación en causas penales en todas sus instancias.</p>
-          <span class="card-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </article>
-
-        <article class="service-card reveal" data-anim="up">
-          <span class="card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6"/></svg></span>
-          <h3>Derecho Comercial</h3>
-          <p>Asesoramiento a empresas, contratos comerciales, sociedades y cumplimiento normativo.</p>
-          <span class="card-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </article>
-
-        <article class="service-card reveal" data-anim="up">
-          <span class="card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.6"/><path d="M3.5 20c0-3.5 2.8-5.5 5.5-5.5s5.5 2 5.5 5.5"/><path d="M14.5 15c2.3.2 4 1.9 4 5"/></svg></span>
-          <h3>Sucesiones</h3>
-          <p>Tramitación de sucesiones, particiones, testamentos y asesoramiento integral.</p>
-          <span class="card-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </article>
-
-        <article class="service-card reveal" data-anim="up">
-          <span class="card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></span>
-          <h3>Contratos</h3>
-          <p>Redacción, revisión y negociación de contratos civiles, comerciales y laborales.</p>
-          <span class="card-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </article>
-
-        <article class="service-card reveal" data-anim="up">
-          <span class="card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="4.2"/></svg></span>
-          <h3>Daños y perjuicios</h3>
-          <p>Reclamos por responsabilidad contractual y extracontractual.</p>
-          <span class="card-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </article>
-
-        <article class="service-card reveal" data-anim="up">
-          <span class="card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 8.6c0 5.6-8.8 11-8.8 11s-8.8-5.4-8.8-11a4.6 4.6 0 0 1 8.8-1.9A4.6 4.6 0 0 1 20.8 8.6Z"/></svg></span>
-          <h3>Derecho de Familia</h3>
-          <p>Divorcios, cuidado personal, alimentos y acuerdos familiares.</p>
-          <span class="card-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </article>
-
-      </div>
-      <div class="services-more reveal" data-anim="up">
-        <a href="#contacto" class="btn btn-outline">Ver todas las especialidades</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOBRE EL ESTUDIO -->
-  <section class="section" id="sobre-estudio">
-    <div class="container about-grid">
-      <div class="reveal" data-anim="left">
-        <span class="eyebrow">Sobre el estudio</span>
-        <h2 class="title-lg">Compromiso, claridad y resultados.</h2>
-        <p class="lead">En Leguizamón &amp; Asociados creemos en una abogacía moderna, ética y humana. Escuchamos, analizamos y acompañamos cada caso con una mirada estratégica y soluciones efectivas.</p>
-
-        <div class="about-values">
-          <div class="value-row"><span class="v-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><span>Enfoque personalizado en cada caso</span></div>
-          <div class="value-row"><span class="v-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8.5 8 9 4.5-.5 8-4 8-9V6l-8-3Z"/></svg></span><span>Transparencia en cada etapa del proceso</span></div>
-          <div class="value-row"><span class="v-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Compromiso con resultados reales</span></div>
-        </div>
-
-        <a href="#" class="btn btn-outline">Conocer más sobre nosotros</a>
-      </div>
-
-      <div class="about-visual reveal" data-anim="right">
-        <img src="estudio.jpg" alt="Oficinas del estudio" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <svg viewBox="0 0 480 380" preserveAspectRatio="xMidYMid slice">
-          <rect width="480" height="380" fill="#EFEAE0"/>
-          <rect x="0" y="0" width="480" height="380" fill="#12243D" opacity="0.03"/>
-          <g stroke="#12243D" stroke-width="1.4" opacity="0.5" fill="none">
-            <line x1="40" y1="0" x2="40" y2="380"/>
-            <line x1="160" y1="0" x2="160" y2="380"/>
-            <line x1="320" y1="0" x2="320" y2="380"/>
-            <line x1="440" y1="0" x2="440" y2="380"/>
-          </g>
-          <rect x="160" y="60" width="160" height="260" fill="#FFFFFF" opacity="0.65"/>
-          <g stroke="#B89646" stroke-width="1.2" fill="none" opacity="0.7">
-            <rect x="60" y="120" width="80" height="140"/>
-            <rect x="340" y="90" width="80" height="170"/>
-          </g>
-          <circle cx="240" cy="150" r="46" fill="none" stroke="#12243D" stroke-width="1" opacity="0.3"/>
-          <text x="240" y="158" font-family="Georgia, serif" font-size="20" fill="#12243D" text-anchor="middle" opacity="0.75">L&amp;A</text>
-          <line x1="0" y1="300" x2="480" y2="300" stroke="#B89646" stroke-width="1" opacity="0.4"/>
-        </svg>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROCESO -->
-  <section class="section process" id="como-trabajamos">
-    <div class="container">
-      <div class="section-head center reveal" data-anim="up">
-        <span class="eyebrow">Cómo trabajamos</span>
-        <h2 class="title-lg">Un proceso claro y eficiente</h2>
-      </div>
-      <div class="process-track">
-        <div class="process-step reveal" data-anim="up"><span class="process-num">01</span><h3>Consulta inicial</h3><p>Escuchamos tu caso y entendemos tus necesidades.</p></div>
-        <div class="process-step reveal" data-anim="up"><span class="process-num">02</span><h3>Análisis</h3><p>Evaluamos la información y las opciones legales disponibles.</p></div>
-        <div class="process-step reveal" data-anim="up"><span class="process-num">03</span><h3>Estrategia</h3><p>Diseñamos la mejor estrategia para tu situación.</p></div>
-        <div class="process-step reveal" data-anim="up"><span class="process-num">04</span><h3>Representación</h3><p>Te acompañamos y representamos en cada instancia.</p></div>
-        <div class="process-step reveal" data-anim="up"><span class="process-num">05</span><h3>Resolución</h3><p>Buscamos la mejor solución posible para tu caso.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STATS -->
-  <section class="stats-band">
-    <svg class="bg-arcs" aria-hidden="true" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid slice">
-      <circle cx="1080" cy="40" r="180" fill="none" stroke="#B89646" stroke-width="1" opacity="0.5"/>
-      <circle cx="60" cy="260" r="140" fill="none" stroke="#B89646" stroke-width="1" opacity="0.4"/>
-    </svg>
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat reveal" data-anim="up"><span class="stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.6"/><path d="M3.5 20c0-3.5 2.8-5.5 5.5-5.5s5.5 2 5.5 5.5"/><path d="M14.5 15c2.3.2 4 1.9 4 5"/></svg></span><b data-count="1200">0</b><span>Casos resueltos</span></div>
-        <div class="stat reveal" data-anim="up"><span class="stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></span><b data-count="15">0</b><span>Años de experiencia</span></div>
-        <div class="stat reveal" data-anim="up"><span class="stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.9 3-6.3 6.5-6.3s6.5 2.4 6.5 6.3"/><circle cx="18" cy="9" r="2.6"/><path d="M15.7 13.8c2.6.3 4.8 2.3 4.8 6.2"/></svg></span><b data-count="850">0</b><span>Clientes</span></div>
-        <div class="stat reveal" data-anim="up"><span class="stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 3l6 3-6 3-6-3 6-3Z"/><path d="M6 8l0 0M18 8v3a3 3 0 0 1-3 3M6 8v3a3 3 0 0 0 3 3M12 14v7M8 21h8"/></svg></span><b data-count="8">0</b><span>Áreas de práctica</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIOS -->
-  <section class="section" id="testimonios">
-    <div class="container">
-      <div class="section-head center reveal" data-anim="up">
-        <span class="eyebrow">Testimonios</span>
-        <h2 class="title-lg">Lo que dicen nuestros clientes</h2>
-      </div>
-      <div class="testi-track" id="testiTrack">
-        <article class="testi-card reveal" data-anim="up">
-          <div class="stars">★★★★★</div>
-          <p>"Excelente profesionalismo y acompañamiento durante todo el proceso. Siempre claros y disponibles."</p>
-          <div class="testi-name"><b>María G.</b><span>Cliente particular</span></div>
-        </article>
-        <article class="testi-card reveal" data-anim="up">
-          <div class="stars">★★★★★</div>
-          <p>"Nos brindaron una solución efectiva y rápida en un tema laboral complejo. Los recomendamos."</p>
-          <div class="testi-name"><b>Carlos M.</b><span>Empresa de servicios</span></div>
-        </article>
-        <article class="testi-card reveal" data-anim="up">
-          <div class="stars">★★★★★</div>
-          <p>"Un estudio serio, confiable y humano. Se nota la experiencia en cada detalle."</p>
-          <div class="testi-name"><b>Lucía R.</b><span>Cliente particular</span></div>
-        </article>
-      </div>
-      <div class="testi-dots" id="testiDots">
-        <button class="active" aria-label="Testimonio 1"></button>
-        <button aria-label="Testimonio 2"></button>
-        <button aria-label="Testimonio 3"></button>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="section" id="faq">
-    <div class="container">
-      <div class="section-head center reveal" data-anim="up">
-        <span class="eyebrow">Preguntas frecuentes</span>
-        <h2 class="title-lg">Resolvemos tus dudas</h2>
-      </div>
-      <div class="faq-list reveal" data-anim="up">
-        <div class="faq-item" data-open="false">
-          <button class="faq-q" aria-expanded="false">¿Cómo agendo una consulta?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
-          <div class="faq-a"><p>Podés escribirnos por WhatsApp, completar el formulario de contacto o llamarnos directamente. Te respondemos a la brevedad para coordinar día y horario.</p></div>
-        </div>
-        <div class="faq-item" data-open="false">
-          <button class="faq-q" aria-expanded="false">¿La primera consulta tiene costo?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
-          <div class="faq-a"><p>La consulta inicial nos permite entender tu caso y evaluar las opciones disponibles. Te informamos el detalle de honorarios de forma clara antes de avanzar.</p></div>
-        </div>
-        <div class="faq-item" data-open="false">
-          <button class="faq-q" aria-expanded="false">¿Atienden casos de forma online?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
-          <div class="faq-a"><p>Sí, ofrecemos consultas presenciales y online para que puedas asesorarte sin importar dónde te encuentres.</p></div>
-        </div>
-        <div class="faq-item" data-open="false">
-          <button class="faq-q" aria-expanded="false">¿Cuánto tarda en resolverse un caso?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
-          <div class="faq-a"><p>Depende de la complejidad y la instancia judicial o extrajudicial. En la consulta inicial te damos una estimación realista de los tiempos.</p></div>
-        </div>
-        <div class="faq-item" data-open="false">
-          <button class="faq-q" aria-expanded="false">¿En qué zonas atienden?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
-          <div class="faq-a"><p>Atendemos en Olavarría y la región, y también de forma remota a clientes de todo el país mediante consultas online.</p></div>
+<section class="section trajectory" id="trayectoria"><svg class="ambient-svg three" viewBox="0 0 240 120" fill="none" aria-hidden="true">
+<path d="M0 92C48 28 88 28 120 72s72 44 120-20" stroke="currentColor"/>
+<path d="M0 108C48 44 88 44 120 88s72 44 120-20" stroke="currentColor" opacity=".45"/>
+</svg>
+  <div class="section-wrap">
+    <aside class="section-rail"><div class="section-no">05</div><div class="section-name">Trayectoria</div></aside>
+    <div class="section-content trajectory-grid">
+      <div class="trajectory-copy">
+        <div class="eyebrow reveal">Trayectoria</div>
+        <h2 class="reveal delay2">Experiencia profesional con una mirada que trasciende el expediente.</h2>
+        <p class="reveal delay3">La identidad del estudio se construye desde el ejercicio de la abogacía y una mirada atenta a la realidad social e institucional en la que el derecho se aplica.</p>
+        <div class="timeline">
+          <div class="timeline-item reveal"><div class="timeline-year">01</div><div><h3>Formación</h3><p>Construcción permanente de herramientas jurídicas y profesionales.</p></div></div>
+          <div class="timeline-item reveal delay2"><div class="timeline-year">02</div><div><h3>Ejercicio profesional</h3><p>Atención de consultas y acompañamiento en distintas áreas del derecho.</p></div></div>
+          <div class="timeline-item reveal delay3"><div class="timeline-year">03</div><div><h3>Participación institucional</h3><p>Una perspectiva que conecta el trabajo jurídico con la vida pública.</p></div></div>
         </div>
       </div>
+      <aside class="public-panel reveal">
+        <div class="eyebrow" style="color:#b7c6d9">Mirada</div>
+        <h3>El derecho también se relaciona con la sociedad en la que vivimos.</h3>
+        <p>Una presencia pública sutil, sin convertir la web profesional en una página partidaria: instituciones, ciudadanía y derechos aparecen como parte del contexto.</p>
+        <div class="public-list">
+          <div>PERSONAS Y DERECHOS</div>
+          <div>INSTITUCIONES Y COMUNIDAD</div>
+          <div>RESPONSABILIDAD PROFESIONAL</div>
+        </div>
+      </aside>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CTA -->
-  <section class="section">
-    <div class="container">
-      <div class="cta-band reveal" data-anim="up">
-        <svg class="cta-arcs" aria-hidden="true" viewBox="0 0 1000 300" preserveAspectRatio="xMidYMid slice">
-          <circle cx="880" cy="30" r="160" fill="none" stroke="#B89646" stroke-width="1" opacity="0.5"/>
-          <line x1="0" y1="260" x2="500" y2="60" stroke="#B89646" stroke-width="1" opacity="0.35"/>
-        </svg>
-        <h2>¿Necesitás asesoramiento jurídico?</h2>
-        <p>Estamos para ayudarte. Contactanos y te responderemos a la brevedad.</p>
-        <a href="#contacto" class="btn btn-primary">Solicitar consulta
-          <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACTO -->
-  <section class="section" id="contacto">
-    <div class="container">
-      <div class="section-head reveal" data-anim="up">
-        <span class="eyebrow">Contacto</span>
-        <h2 class="title-lg">Conversemos sobre tu caso</h2>
-      </div>
-
-      <div class="contact-grid">
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-        <form class="form-card reveal" data-anim="left" id="contactForm" method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbx9bXJzA98MKynaF0vXYf_7ZVM6ksO1-SP2bnIfFnVLeHf7ev3P4oAK02pEujjvEdBYng/exec">
-          <p class="hp-field"><label>No completar: <input name="botcheck"></label></p>
-
-          <div class="field">
-            <label for="f-nombre">Nombre y apellido</label>
-            <input id="f-nombre" name="nombre" type="text" required autocomplete="name">
+<section class="section faq" id="preguntas">
+  <div class="section-wrap">
+    <aside class="section-rail"><div class="section-no">06</div><div class="section-name">Preguntas frecuentes</div></aside>
+    <div class="section-content faq-content">
+      <div class="eyebrow reveal">Preguntas frecuentes</div>
+      <h2 class="reveal delay2">Dudas antes de escribirnos</h2>
+      <div class="accordion">
+        <div class="accordion-item reveal">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="faq1">
+            <span>¿Cómo es la primera consulta?</span><span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel" id="faq1">
+            <p>Nos contás tu situación, revisamos la documentación disponible y te decimos con claridad si hay un camino legal y cuál sería. No hay compromiso de avanzar más allá de esa conversación.</p>
           </div>
-          <div class="field">
-            <label for="f-email">Correo electrónico</label>
-            <input id="f-email" name="email" type="email" required autocomplete="email">
+        </div>
+        <div class="accordion-item reveal delay2">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="faq2">
+            <span>¿Atienden de forma presencial y online?</span><span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel" id="faq2">
+            <p>Sí, coordinamos la modalidad según lo que sea más cómodo para vos y la naturaleza del caso.</p>
           </div>
-          <div class="field">
-            <label for="f-tel">Teléfono</label>
-            <input id="f-tel" name="telefono" type="tel" autocomplete="tel">
+        </div>
+        <div class="accordion-item reveal delay3">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="faq3">
+            <span>¿Cómo se definen los honorarios?</span><span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel" id="faq3">
+            <p>Depende de la complejidad y el tipo de trámite. Siempre se conversan y se explican antes de iniciar cualquier gestión, sin sorpresas.</p>
           </div>
-          <div class="field">
-            <label for="f-msg">Contanos tu consulta</label>
-            <textarea id="f-msg" name="mensaje" required></textarea>
-          </div>
-          <div class="field" style="display:flex;align-items:flex-start;gap:10px;">
-            <input type="checkbox" id="f-privacidad" name="acepto_privacidad" required style="width:18px;height:18px;min-height:0;margin-top:2px;flex-shrink:0;">
-            <label for="f-privacidad" style="font-weight:400;font-size:.875rem;margin:0;">He leído y acepto la <a href="privacidad.html" target="_blank" rel="noopener" style="color:var(--gold);font-weight:600;">Política de Privacidad</a>.</label>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width:100%;">Enviar consulta</button>
-        </form>
-
-        <div class="reveal" data-anim="right">
-          <div class="info-card">
-            <div class="info-row"><span class="i-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><div><b>Dirección</b><span>Alvear 123, Olavarría, Buenos Aires</span></div></div>
-            <div class="info-row"><span class="i-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2Z"/></svg></span><div><b>Teléfono</b><span>2284 123 456</span></div></div>
-            <div class="info-row"><span class="i-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><div><b>Email</b><span>info@leguizamonasociados.com.ar</span></div></div>
-            <div class="info-row"><span class="i-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><div><b>Horarios</b><span>Lunes a Viernes de 8:30 a 18:00</span></div></div>
-          </div>
-
-          <div class="map-wrap">
-            <iframe title="Ubicación del estudio en Olavarría" loading="lazy" src="https://www.google.com/maps?q=Alvear%20123%2C%20Olavarr%C3%ADa%2C%20Buenos%20Aires&output=embed"></iframe>
-          </div>
-
-          <div class="social-row">
-            <a href="https://wa.me/542284123456" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.55L3 20l1.05-5.4A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.5 9.5c0 3.5 2.5 6 6 6"/></svg></a>
-            <a href="#" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg></a>
-            <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><line x1="7.5" y1="10.5" x2="7.5" y2="16.5"/><circle cx="7.5" cy="7.5" r="0.4" fill="currentColor"/><path d="M11.5 16.5v-4a2 2 0 0 1 4 0v4"/><line x1="11.5" y1="10.5" x2="11.5" y2="16.5"/></svg></a>
+        </div>
+        <div class="accordion-item reveal">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="faq4">
+            <span>¿Puedo consultar por un tema que no está en la lista de áreas?</span><span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel" id="faq4">
+            <p>Escribinos igual. Si no podemos resolverlo directamente, te orientamos sobre el paso a seguir.</p>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
+<section class="section cta-final">
+  <div class="container">
+    <div class="eyebrow reveal" style="color:#b7c6d9">Estamos para ayudarte</div>
+    <h2 class="reveal delay2">Tu situación merece una respuesta clara, no una espera incierta.</h2>
+    <div class="cta-final-actions reveal delay3">
+      <a class="btn light" href="https://wa.me/5490000000000?text=Hola%20Moira%2C%20quiero%20hacer%20una%20consulta." target="_blank" rel="noopener">Escribinos por WhatsApp <span class="arrow">→</span></a>
+      <a class="btn" style="border-color:rgba(255,255,255,.7);color:white" href="#contacto">Ver datos de contacto <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="contacto">
+  <div class="section-wrap">
+    <aside class="section-rail"><div class="section-no">07</div><div class="section-name">Contacto</div></aside>
+    <div class="section-content contact-grid">
+      <div class="contact-copy reveal">
+        <div class="eyebrow">Contacto</div>
+        <h2>Hablemos de tu caso.</h2>
+        <p>Escribinos para contarnos brevemente tu situación. Podemos coordinar una primera conversación y definir la modalidad de atención más conveniente.</p>
+        <a class="btn primary" href="https://wa.me/5490000000000?text=Hola%20Moira%2C%20quiero%20consultar%20por%20un%20caso." target="_blank" rel="noopener">Escribinos por WhatsApp <span class="arrow">→</span></a>
+        <a class="btn outline" href="mailto:moiradolera@gmail.com">Enviar un email <span class="arrow">→</span></a>
+      </div>
+      <div class="contact-data reveal delay2">
+        <div class="data-row"><span>Email</span><strong><a href="mailto:moiradolera@gmail.com">moiradolera@gmail.com</a></strong></div>
+        <div class="data-row"><span>Estudio</span><strong>Moira Dolera Lembeye y Asociados</strong></div>
+        <div class="data-row"><span>Atención</span><strong>Modalidad presencial y online</strong></div>
+        <div class="data-row"><span>Áreas</span><strong>Civil · Familia · Laboral · Comercial · Sucesiones · Amparos · Consumidor · Inmobiliario</strong></div>
+<div class="map-card" aria-label="Mapa de ubicación del estudio">
+  <iframe
+    title="Ubicación del estudio"
+    loading="lazy"
+    src="https://www.openstreetmap.org/export/embed.html?bbox=-58.65%2C-34.65%2C-58.30%2C-34.45&layer=mapnik">
+  </iframe>
+  <div class="map-label">Buenos Aires · Ubicación</div>
+</div>
+
+      </div>
+    </div>
+  </div>
+</section>
 </main>
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="logo">
-          <span class="logo-mark"><span>L<em>&amp;</em>A</span></span>
-          <span class="logo-text"><b>Leguizamón &amp; Asociados</b><small>Estudio Jurídico</small></span>
-        </div>
-        <p>Asesoramiento jurídico claro, transparente y cercano para personas y empresas en Olavarría y la región.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Especialidades</h4>
-        <ul>
-          <li><a href="#especialidades">Derecho Civil</a></li>
-          <li><a href="#especialidades">Derecho Laboral</a></li>
-          <li><a href="#especialidades">Derecho Penal</a></li>
-          <li><a href="#especialidades">Derecho Comercial</a></li>
-          <li><a href="#especialidades">Sucesiones</a></li>
-          <li><a href="#especialidades">Contratos</a></li>
-          <li><a href="#especialidades">Daños y perjuicios</a></li>
-          <li><a href="#especialidades">Derecho de Familia</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contacto</h4>
-        <ul>
-          <li><a href="#">Alvear 123, Olavarría, Buenos Aires</a></li>
-          <li><a href="tel:+542284123456">2284 123 456</a></li>
-          <li><a href="mailto:info@leguizamonasociados.com.ar">info@leguizamonasociados.com.ar</a></li>
-          <li><a href="#">Lunes a Viernes de 8:30 a 18:00</a></li>
-        </ul>
-      </div>
+<footer>
+  <div class="container footer-main">
+    <div class="brand footer-brand">
+      <img class="logo-img" src="images/logo-mdl.webp" alt="Estudio Moira Dolera Lembeye y Asociados">
+      <div class="brand-copy">ESTUDIO<br><strong>MOIRA DOLERA LEMBEYE</strong><br><span>Y ASOCIADOS</span></div>
     </div>
-    <div class="footer-bottom">
-      <span>© <span id="year"></span> Leguizamón &amp; Asociados. Todos los derechos reservados.</span>
-      <div class="footer-legal">
-        <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso Legal</a>
-        <a href="privacidad.html" target="_blank" rel="noopener">Política de Privacidad</a>
-        <a href="cookies.html" target="_blank" rel="noopener">Política de Cookies</a>
-        <a href="https://www.instagram.com/switchgestion/" target="_blank" rel="noopener">Switch Gestión</a>
-      </div>
-    </div>
+    <nav class="footer-links">
+      <a href="#inicio">Inicio</a><a href="#estudio">Estudio</a><a href="#areas">Áreas</a><a href="#metodo">Cómo trabajamos</a><a href="#trayectoria">Trayectoria</a><a href="#preguntas">Preguntas</a><a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+  <div class="container" style="padding:0 0 15px">
+    <nav class="footer-links" style="gap:16px">
+      <a href="legal.html#aviso">Aviso legal</a><a href="legal.html#privacidad">Privacidad</a><a href="legal.html#terminos">Términos</a>
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 Estudio Moira Dolera Lembeye y Asociados. Todos los derechos reservados.</span>
+    <span>Diseño &amp; creación web · <a href="https://www.instagram.com/switchgestion/" target="_blank" rel="noopener" style="color:#8294a6">@Switchgestion</a></span>
   </div>
 </footer>
 
-<a class="wa-float" href="https://wa.me/542284123456" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.55L3 20l1.05-5.4A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.5 9.5c0 3.5 2.5 6 6 6"/></svg>
+<a class="whatsapp" href="https://wa.me/5490000000000?text=Hola%20Moira%2C%20quiero%20hacer%20una%20consulta." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><path d="M27 15.5a11 11 0 0 1-16.5 9.5L5 27l2-5.2A11 11 0 1 1 27 15.5Z"/><path d="M12 11.5c.5-1 1-1 1.5-.1l1.2 2c.3.5.2.9-.2 1.3l-.8.8c1 1.7 2.2 2.8 4 3.7l.8-.9c.3-.4.8-.5 1.3-.2l2 1.1c.8.5.9 1 .4 1.7-.7 1-1.7 1.4-2.8 1.1-4.6-1.2-8.1-4.6-9.3-8.9-.3-1.1.1-2 .9-2.6Z"/></svg>
 </a>
 
 <script>
-(function(){
-  // Header shrink + active link
-  var header=document.getElementById('siteHeader');
-  var onScroll=function(){header.classList.toggle('is-scrolled', window.scrollY>10);};
-  document.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
+const nav = document.getElementById('nav');
+const menuBtn = document.getElementById('menuBtn');
+const menuCloseBtn = document.getElementById('menuCloseBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+function openMenu(){mobileMenu.classList.add('open');document.body.classList.add('menu-open');menuBtn.setAttribute('aria-expanded','true');}
+function closeMenu(){mobileMenu.classList.remove('open');document.body.classList.remove('menu-open');menuBtn.setAttribute('aria-expanded','false');}
+menuBtn.addEventListener('click',openMenu);
+menuCloseBtn.addEventListener('click',closeMenu);
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
 
-  // Mobile nav
-  var nav=document.getElementById('mainNav'), toggle=document.getElementById('navToggle');
-  toggle.addEventListener('click', function(){
-    var open=nav.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', open);
-  });
-  nav.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){nav.classList.remove('is-open'); toggle.setAttribute('aria-expanded','false');});
-  });
-// Envío del formulario de contacto (Google Sheets)
-  var contactForm=document.getElementById('contactForm');
-  var hiddenIframe=document.getElementById('hidden_iframe');
-  var formSubmitted=false;
-  if(contactForm && hiddenIframe){
-    contactForm.addEventListener('submit', function(){ formSubmitted=true; });
-    hiddenIframe.addEventListener('load', function(){
-      if(formSubmitted){
-        contactForm.innerHTML='<p style="text-align:center;font-weight:600;color:var(--navy);padding:40px 0;">¡Gracias! Tu consulta fue enviada, te vamos a contactar a la brevedad.</p>';
-      }
+document.querySelectorAll('.accordion-trigger').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const panel = document.getElementById(btn.getAttribute('aria-controls'));
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    document.querySelectorAll('.accordion-trigger').forEach(other=>{
+      other.setAttribute('aria-expanded','false');
+      document.getElementById(other.getAttribute('aria-controls')).style.maxHeight = null;
     });
-  }
-
-  // Glow en cards al pasar el mouse
-  document.querySelectorAll('.service-card').forEach(function(card){
-    card.addEventListener('mousemove', function(e){
-      var r=card.getBoundingClientRect();
-      card.style.setProperty('--mx', (e.clientX-r.left)+'px');
-      card.style.setProperty('--my', (e.clientY-r.top)+'px');
-    });
+    if(!isOpen){ btn.setAttribute('aria-expanded','true'); panel.style.maxHeight = panel.scrollHeight + 'px'; }
   });
-  // FAQ accordion
-  document.querySelectorAll('.faq-item').forEach(function(item){
-    var btn=item.querySelector('.faq-q'), panel=item.querySelector('.faq-a');
-    btn.addEventListener('click', function(){
-      var isOpen=item.getAttribute('data-open')==='true';
-      document.querySelectorAll('.faq-item').forEach(function(other){
-        other.setAttribute('data-open','false');
-        other.querySelector('.faq-q').setAttribute('aria-expanded','false');
-        other.querySelector('.faq-a').style.maxHeight=null;
-      });
-      if(!isOpen){
-        item.setAttribute('data-open','true');
-        btn.setAttribute('aria-expanded','true');
-        panel.style.maxHeight=panel.scrollHeight+'px';
-      }
-    });
+});
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('visible'); });
+},{threshold:.14});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+},{passive:true});
+
+const guide = document.getElementById('pageGuide');
+const guideLabel = document.getElementById('guideLabel');
+const guideSections = [...document.querySelectorAll('main > section')];
+const guideColors = ['#B7C6D9','#4F6D8A','#8FA9C1','#B7C6D9','#6F8DA8','#8FA9C1','#4F6D8A','#4F6D8A'];
+
+function updateGuide(){
+  const viewportCenter = window.innerHeight / 2;
+  let active = 0, best = Infinity;
+  guideSections.forEach((section,i)=>{
+    const r = section.getBoundingClientRect();
+    const d = Math.abs((r.top+r.height/2)-viewportCenter);
+    if(d<best){best=d;active=i;}
   });
-
-  // Scroll reveal
-  var revealEls=document.querySelectorAll('.reveal');
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){e.target.classList.add('is-visible'); io.unobserve(e.target);}
-      });
-    },{threshold:0.15});
-    revealEls.forEach(function(el){io.observe(el);});
-  } else {
-    revealEls.forEach(function(el){el.classList.add('is-visible');});
-  }
-
-  // Counters
-  var counters=document.querySelectorAll('[data-count]');
-  var animateCount=function(el){
-    var target=parseInt(el.getAttribute('data-count'),10), start=0, dur=1400, t0=null;
-    function step(ts){
-      if(!t0) t0=ts;
-      var p=Math.min((ts-t0)/dur,1);
-      el.textContent=Math.floor(p*(target-start)+start)+(p>=1 && target>=100?'+':(p>=1?'+':''));
-      if(p<1) requestAnimationFrame(step); else el.textContent=target+'+';
-    }
-    requestAnimationFrame(step);
-  };
-  if('IntersectionObserver' in window){
-    var cio=new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){animateCount(e.target); cio.unobserve(e.target);} });
-    },{threshold:0.4});
-    counters.forEach(function(el){cio.observe(el);});
-  } else {
-    counters.forEach(function(el){el.textContent=el.getAttribute('data-count')+'+';});
-  }
-
-  // Testimonios dots (mobile)
-  var track=document.getElementById('testiTrack');
-  var dots=document.querySelectorAll('#testiDots button');
-  if(track && dots.length){
-    track.addEventListener('scroll', function(){
-      var idx=Math.round(track.scrollLeft/track.clientWidth);
-      dots.forEach(function(d,i){d.classList.toggle('active', i===idx);});
-    }, {passive:true});
-    dots.forEach(function(d,i){
-      d.addEventListener('click', function(){ track.scrollTo({left:i*track.clientWidth, behavior:'smooth'}); });
-    });
-  }
-
-  // Active nav link on scroll
-  var sections=['inicio','especialidades','sobre-estudio','como-trabajamos','faq','contacto'].map(function(id){return document.getElementById(id);}).filter(Boolean);
-  var links=document.querySelectorAll('.main-nav a');
-  var setActive=function(){
-    var pos=window.scrollY+140;
-    var current=sections[0];
-    sections.forEach(function(s){ if(pos>=s.offsetTop) current=s; });
-    links.forEach(function(l){ l.classList.toggle('active', l.getAttribute('href')==='#'+current.id); });
-  };
-  document.addEventListener('scroll', setActive, {passive:true});
-  setActive();
-
-  document.getElementById('year').textContent=new Date().getFullYear();
-})();
-</script>
-<div class="cookie-banner" id="cookieBanner">
-  <p>Usamos cookies propias y de terceros para analítica y publicidad. Podés aceptarlas, rechazarlas o ver más en nuestra <a href="cookies.html" target="_blank" rel="noopener">Política de Cookies</a>.</p>
-  <div class="cookie-actions">
-    <button id="cookieReject" class="btn btn-outline btn-sm">Rechazar</button>
-    <button id="cookieAccept" class="btn btn-primary btn-sm">Aceptar</button>
-  </div>
-</div>
-<style>
-.cookie-banner{
-  position:fixed;left:16px;right:16px;bottom:16px;z-index:150;max-width:560px;margin-inline:auto;
-  background:#FFFFFF;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-md);
-  padding:20px 22px;display:flex;flex-direction:column;gap:14px;
-  transform:translateY(140%);transition:transform 320ms ease;
+  const r = guideSections[active].getBoundingClientRect();
+  const progress = Math.min(1,Math.max(0,(viewportCenter-r.top)/Math.max(1,r.height)));
+  const top = 23 + progress*54;
+  guide.style.top = top + '%';
+  guide.style.setProperty('--guide-color', guideColors[active]);
+  const labels = ['Inicio','Nuestro estudio','Áreas de práctica','Cómo trabajamos','Trayectoria','Preguntas frecuentes','Estamos para ayudarte','Contacto'];
+  guideLabel.textContent = labels[active] + ' · MDL';
 }
-.cookie-banner.is-visible{transform:translateY(0);}
-.cookie-banner p{font-size:.875rem;color:var(--text-muted);margin:0;}
-.cookie-banner a{color:var(--gold);font-weight:600;}
-.cookie-actions{display:flex;gap:10px;justify-content:flex-end;}
-@media (max-width:480px){.cookie-actions{justify-content:stretch;}.cookie-actions .btn{flex:1;}}
-</style>
-<script>
-(function(){
-  var banner=document.getElementById('cookieBanner');
-  var stored=localStorage.getItem('cookieConsent');
-  if(!stored){ setTimeout(function(){ banner.classList.add('is-visible'); }, 600); }
-  document.getElementById('cookieAccept').addEventListener('click', function(){
-    localStorage.setItem('cookieConsent','accepted');
-    banner.classList.remove('is-visible');
-  });
-  document.getElementById('cookieReject').addEventListener('click', function(){
-    localStorage.setItem('cookieConsent','rejected');
-    banner.classList.remove('is-visible');
-  });
-})();
+window.addEventListener('scroll', updateGuide, {passive:true});
+window.addEventListener('resize', updateGuide);
+updateGuide();
 </script>
 </body>
 </html>
